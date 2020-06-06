@@ -1,8 +1,7 @@
 name: form_validator
 description: Simplest form validation for flutter form widgets
 version: 0.1.0
-author:
-homepage:
+homepage: https://github.com/TheMisir/form-validator
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
