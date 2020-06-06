@@ -1,0 +1,11 @@
+name: form_validator
+description: Simplest form validation for flutter form widgets
+version: 0.1.0
+author:
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dev_dependencies:
+  test: ^1.0.0
