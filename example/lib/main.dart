@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: _validate,
         tooltip: 'Next',
         child: Icon(Icons.arrow_forward),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
