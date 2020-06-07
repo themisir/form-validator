@@ -1,0 +1,26 @@
+name: Dart CI
+on: [push, pull_request]
+jobs:
+  test:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ["2.6", "2.7", "2.8", "dev"]
+    container:
+      image:  google/dart:${{ matrix.version }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: pub get
+      - name: Run tests
+        run: pub run test
+
+  package-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # required
+      - uses: axel-op/dart-package-analyzer@stable
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          minAnnotationLevel: info
