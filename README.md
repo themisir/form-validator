@@ -221,6 +221,23 @@ build(BuildContext context) {
 
 <small><b>PROTIP:</b> Feel free to add your locale to library by opening pull request  [TheMisir/form-validator](https://github.com/TheMisir/form-validator) to support library.</small>
 
+### Extending `ValidationBuilder`
+
+You can use dart [`extension methods`](https://dart.dev/guides/language/extension-methods) to extend `ValidationBuilder`.
+
+```dart
+extension CustomValidationBuilder on ValidationBuilder {
+  password() => add((value) {
+    if (value == 'password') {
+      return 'Password should not "password"';
+    }
+    return null;
+  });
+}
+
+final validator = ValidationBuilder().password().build();
+```
+
 ## Support
 
 If you would like to support this library you could translate messages to your own language.
