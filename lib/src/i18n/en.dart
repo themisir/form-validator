@@ -7,27 +7,26 @@ class LocaleEn extends FormValidatorLocale {
   String name() => 'en';
 
   @override
-  String minLength(String v, int n) =>
-      'Minimum length must be at least $n characters';
+  String minLength(String v, int n) => 'The field must be at least $n characters long';
 
   @override
-  String maxLength(String v, int n) => '...';
+  String maxLength(String v, int n) => 'The field must be at most $n characters long';
 
   @override
-  String email(String v) => 'Email is wrong';
+  String email(String v) => 'The field is not a valid email address';
 
   @override
-  String phoneNumber(String v) => 'Phone number is wrong';
+  String phoneNumber(String v) => 'The field is not a valid phone number';
 
   @override
-  String required() => 'Required';
+  String required() => 'The field is required';
 
   @override
-  String ip(String v) => 'Wrong IP address';
+  String ip(String v) => 'The field is not a valid IP address';
 
   @override
-  String ipv6(String v) => 'Wrong IPv6 address';
+  String ipv6(String v) => 'The field is not a valid IPv6 address';
 
   @override
-  String url(String v) => 'Wrong URL address';
+  String url(String v) => 'The field is not a valid URL address';
 }
