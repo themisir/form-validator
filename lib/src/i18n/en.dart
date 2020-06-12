@@ -1,16 +1,16 @@
 import '../form_validator_locale.dart';
 
-// TODO: Improve validation messages
-
 class LocaleEn extends FormValidatorLocale {
   @override
   String name() => 'en';
 
   @override
-  String minLength(String v, int n) => 'The field must be at least $n characters long';
+  String minLength(String v, int n) =>
+      'The field must be at least $n characters long';
 
   @override
-  String maxLength(String v, int n) => 'The field must be at most $n characters long';
+  String maxLength(String v, int n) =>
+      'The field must be at most $n characters long';
 
   @override
   String email(String v) => 'The field is not a valid email address';
