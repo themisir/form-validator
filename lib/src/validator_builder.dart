@@ -21,6 +21,7 @@ class ValidationBuilder {
   }
 
   static FormValidatorLocale globalLocale = createLocale('default');
+
   static void setLocale(String localeName) {
     globalLocale = createLocale(localeName);
   }
@@ -105,7 +106,7 @@ class ValidationBuilder {
       add((v) => regExp.hasMatch(v) ? null : message);
 
   static final RegExp _emailRegExp = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9\-\_]+(\.[a-zA-Z]+)*$");
   static final RegExp _nonDigitsExp = RegExp(r'[^\d]');
   static final RegExp _anyLetter = RegExp(r'[A-Za-z]');
   static final RegExp _phoneRegExp = RegExp(r'^\d{7,15}$');
