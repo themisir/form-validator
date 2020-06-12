@@ -1,3 +1,7 @@
+## [0.1.2] - 6/12/2020
+
+* Added messages for english
+
 ## [0.1.1+2] - 6/7/2020
 
 * Added documentation
