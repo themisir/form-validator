@@ -8,42 +8,47 @@ final availableLocales = <String, FormValidatorLocale>{
   'en': LocaleEn(),
 };
 
+void validateLocale(ValidationBuilder builder, FormValidatorLocale locale) {
+  expect(builder.reset().test(null), equals(locale.required()));
+  expect(builder.reset().minLength(5).test('abc'),
+      equals(locale.minLength('abc', 5)));
+  expect(builder.reset().maxLength(1).test('abc'),
+      equals(locale.maxLength('abc', 1)));
+  expect(builder.reset().email().test('abc'), equals(locale.email('abc')));
+  expect(builder.reset().phone().test('abc'), equals(locale.phoneNumber('abc')));
+  expect(builder.reset().url().test('abc'), equals(locale.url('abc')));
+  expect(builder.reset().ip().test('abc'), equals(locale.ip('abc')));
+  expect(builder.reset().ipv6().test('abc'), equals(locale.ipv6('abc')));
+}
+
 void main() {
   test('global locale by name', () {
     availableLocales.forEach((key, value) {
       ValidationBuilder.setLocale(key);
-      expect(
-        ValidationBuilder().minLength(5).test('hey'),
-        equals(value.minLength('hey', 5)),
-      );
+      validateLocale(ValidationBuilder(), value);
     });
   });
 
   test('global locale', () {
     availableLocales.values.forEach((value) {
       ValidationBuilder.globalLocale = value;
-      expect(
-        ValidationBuilder().minLength(5).test('hey'),
-        equals(value.minLength('hey', 5)),
-      );
+      validateLocale(ValidationBuilder(), value);
     });
   });
 
   test('local locale by name', () {
     availableLocales.forEach((key, value) {
-      expect(
-        ValidationBuilder(localeName: key).minLength(5).test('hey'),
-        equals(value.minLength('hey', 5)),
-      );
+      validateLocale(ValidationBuilder(localeName: key), value);
     });
   });
 
   test('local locale', () {
     availableLocales.values.forEach((value) {
-      expect(
-        ValidationBuilder(locale: value).minLength(5).test('hey'),
-        equals(value.minLength('hey', 5)),
-      );
+      validateLocale(ValidationBuilder(locale: value), value);
     });
+  });
+
+  test('invalid locale', () {
+    expect(() => ValidationBuilder(localeName: 'invalid'), throwsArgumentError);
   });
 }

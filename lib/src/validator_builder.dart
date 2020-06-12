@@ -11,7 +11,7 @@ class ValidationBuilder {
     String localeName,
     this.optional = false,
     FormValidatorLocale locale,
-    String requiredMessage,
+    this.requiredMessage,
   }) : _locale = locale ??
             (localeName == null ? globalLocale : createLocale(localeName)) {
     ArgumentError.checkNotNull(_locale, 'locale');
@@ -27,8 +27,19 @@ class ValidationBuilder {
   }
 
   final bool optional;
+  final String requiredMessage;
   final FormValidatorLocale _locale;
   final List<StringValidationCallback> validations = [];
+
+  /// Clears validation list and adds required validation if
+  /// [optional] is false
+  ValidationBuilder reset() {
+    validations.clear();
+    if (optional != true) {
+      required(requiredMessage);
+    }
+    return this;
+  }
 
   /// Adds new item to [validations] list, returns this instance
   ValidationBuilder add(StringValidationCallback validator) {
