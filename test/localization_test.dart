@@ -22,6 +22,12 @@ void validateLocale(ValidationBuilder builder, FormValidatorLocale locale) {
 }
 
 void main() {
+  test('locale names', () {
+    availableLocales.forEach((key, value) {
+      expect(value.name(), equals(key));
+    });
+  });
+
   test('global locale by name', () {
     availableLocales.forEach((key, value) {
       ValidationBuilder.setLocale(key);
