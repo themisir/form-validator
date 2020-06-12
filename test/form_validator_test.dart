@@ -30,6 +30,7 @@ void main() {
     checkValidation(validate, validValues: [
       'user@gmil.com',
       'mani@main.com',
+      'email@no-domain',
       'somelonger_email@domain.co.uk',
       'santa.claus@somewhere.us.com',
       'mail?@gmail.com',
@@ -126,6 +127,23 @@ void main() {
     ], invalidValues: [
       'not-an-ip',
       '12.34.56.78',
+    ]);
+  });
+
+  test('validate custom regex', () {
+    final validate = ValidationBuilder()
+        .regExp(RegExp(r'^([abc]|[^def])+$'), 'wrong')
+        .build();
+
+    checkValidation(validate, validValues: [
+      'abc',
+      'abababab',
+      'cbabababc',
+    ], invalidValues: [
+      'abcd',
+      'dddd',
+      'def',
+      'abaabababababaababfaba',
     ]);
   });
 }
