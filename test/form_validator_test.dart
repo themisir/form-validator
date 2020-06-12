@@ -58,7 +58,7 @@ void main() {
     ]);
   });
 
-  test('validate or operator', () {
+  test('or operator', () {
     final validate = ValidationBuilder()
         .or(
           (builder) => builder.email('wrong email'),
@@ -80,5 +80,52 @@ void main() {
 
     expect(validate('nothing'), equals('wrong email'),
         reason: 'reverse is true');
+  });
+
+  test('validate url', () {
+    final validate = ValidationBuilder().url().build();
+
+    checkValidation(validate, validValues: [
+      'https://themisir.com',
+      'http://google.com',
+      'https://pub.dev/packages/form_validator',
+      'https://domain.tld:1234/url/to/page?query=string&another#hash',
+      'http://with-symbold.com',
+      'https://this.is.sub.domain.tld',
+    ], invalidValues: [
+      'url-without-protocol.com',
+      'htps//invalid.protocol.com',
+      'http://invalid-port:PORT/page',
+    ]);
+  });
+
+  test('validate IPv4 address', () {
+    final validate = ValidationBuilder().ip().build();
+
+    checkValidation(validate, validValues: [
+      '1.1.1.1',
+      '22.22.22.22',
+      '255.255.255.255',
+      '1.2.3.4',
+      '192.168.0.1',
+    ], invalidValues: [
+      '256.256.256.256',
+      '300.300.300.300',
+      'not.ip.addr.ess',
+      '1.2.3',
+      '1.2.3.4.5',
+    ]);
+  });
+
+  test('validate IPv6 address', () {
+    final validate = ValidationBuilder().ipv6().build();
+
+    // TODO: needs more tests
+    checkValidation(validate, validValues: [
+      'fe80:3::1ff:fe23:4567:890a'
+    ], invalidValues: [
+      'not-an-ip',
+      '12.34.56.78',
+    ]);
   });
 }
