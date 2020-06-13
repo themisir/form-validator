@@ -1,11 +1,13 @@
 import 'package:form_validator/form_validator.dart';
 import 'package:form_validator/src/i18n/az.dart';
+import 'package:form_validator/src/i18n/tr.dart';
 import 'package:form_validator/src/i18n/en.dart';
 import 'package:test/test.dart';
 
 final availableLocales = <String, FormValidatorLocale>{
   'az': LocaleAz(),
   'en': LocaleEn(),
+  'tr': LocaleTr(),
 };
 
 void validateLocale(ValidationBuilder builder, FormValidatorLocale locale) {
