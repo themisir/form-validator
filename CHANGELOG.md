@@ -1,3 +1,7 @@
+## [0.1.3] - 6/13/2020
+
+* Added turkish language
+
 ## [0.1.2] - 6/12/2020
 
 * Added messages for english
