@@ -2,7 +2,7 @@
 
 [![pub package](https://img.shields.io/pub/v/form_validator.svg)](https://pub.dev/packages/form_validator)
 [![GitHub](https://img.shields.io/github/license/TheMisir/form-validator)](https://github.com/TheMisir/form-validator/blob/master/LICENSE)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/themisir/form-validator/Test)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/themisir/form-validator/Test)](https://github.com/TheMisir/form-validator/actions)
 [![codecov](https://codecov.io/gh/TheMisir/form-validator/branch/master/graph/badge.svg)](https://codecov.io/gh/TheMisir/form-validator)
 
 Simplest form validation for flutter form widgets.
@@ -147,10 +147,7 @@ print(
 
 You need to construct different instances for each validation.
 
-<table><tr>
-  <th><img src="https://via.placeholder.com/15/f03c15/000000?text=+" /> Wrong</th>
-  <th><img src="https://via.placeholder.com/15/c5f015/000000?text=+" /> Correct</th>
-</tr><tr><td>
+#### <img src="https://via.placeholder.com/15/f03c15/000000?text=+" /> Wrong
 
 ```dart
 final builder = ValidationBuilder().email();
@@ -163,7 +160,7 @@ TextFormField(
 ),
 ```
 
-</td><td>
+#### <img src="https://via.placeholder.com/15/c5f015/000000?text=+" /> Correct
 
 ```dart
 final validator1 = ValidationBuilder().email().maxLength(50).build();
@@ -177,7 +174,6 @@ TextFormField(
 ),
 ```
 
-</td></tr></table>
 
 ### Add custom localization
 
