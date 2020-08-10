@@ -19,7 +19,7 @@ class LocaleFr extends FormValidatorLocale {
   String phoneNumber(String v) => 'Numéro de téléphone invalide';
 
   @override
-  String required() => "Le champ est requis";
+  String required() => 'Le champ est requis';
 
   @override
   String ip(String v) => "Le champ n'est pas une adresse IP valide";
