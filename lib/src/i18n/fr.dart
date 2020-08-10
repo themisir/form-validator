@@ -13,10 +13,10 @@ class LocaleFr extends FormValidatorLocale {
       "Le champ ne peut pas contenir plus de $n caractère${n > 1 ? 's' : ''}";
 
   @override
-  String email(String v) => "Adresse email invalide";
+  String email(String v) => 'Adresse email invalide';
 
   @override
-  String phoneNumber(String v) => "Numéro de téléphone invalide";
+  String phoneNumber(String v) => 'Numéro de téléphone invalide';
 
   @override
   String required() => "Le champ est requis";
