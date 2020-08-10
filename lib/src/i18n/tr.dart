@@ -5,12 +5,10 @@ class LocaleTr extends FormValidatorLocale {
   String name() => 'tr';
 
   @override
-  String minLength(String v, int n) =>
-      'Bu alan en az $n harf olmalı';
+  String minLength(String v, int n) => 'Bu alan en az $n harf olmalı';
 
   @override
-  String maxLength(String v, int n) =>
-      'Bu alan en fazla $n harf olmalı';
+  String maxLength(String v, int n) => 'Bu alan en fazla $n harf olmalı';
 
   @override
   String email(String v) => 'Email adresi geçerli değil';
