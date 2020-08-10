@@ -1,6 +1,10 @@
+## [0.1.4] - 8/11/2020
+
+* Added French language
+
 ## [0.1.3] - 6/13/2020
 
-* Added turkish language
+* Added Turkish language
 
 ## [0.1.2] - 6/12/2020
 
