@@ -1,3 +1,7 @@
+## [0.1.4+1] - 8/11/2020
+
+* Fixed analysis warnings
+
 ## [0.1.4] - 8/11/2020
 
 * Added French language
