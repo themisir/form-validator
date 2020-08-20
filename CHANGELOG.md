@@ -1,3 +1,7 @@
+## [0.1.5] - 8/21/2020
+
+* Added German language
+
 ## [0.1.4+1] - 8/11/2020
 
 * Fixed analysis warnings
