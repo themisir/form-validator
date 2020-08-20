@@ -7,11 +7,15 @@ class ValidationBuilder {
   ValidationBuilder({
     String localeName,
     LocaleData locale,
-  }) : _messages = locale ??
+    this.optional,
+    String requiredMessage,
+  })  : _messages = locale ??
             (localeName == null
                 ? FormValidator.locale
-                : FormValidator.getLocale(localeName)) {
+                : FormValidator.getLocale(localeName)),
+        _requiredMessage = requiredMessage {
     ArgumentError.checkNotNull(_messages, 'locale');
+    reset();
   }
 
   /// Change global locale
@@ -20,9 +24,13 @@ class ValidationBuilder {
   }
 
   final LocaleData _messages;
+  final String _requiredMessage;
 
   /// Validations that applied
-  final List<StringValidationCallback> validations = [];
+  final validations = <StringValidationCallback>[];
+
+  /// Whether the field value could be null or empty
+  final bool optional;
 
   /// Message translation data
   LocaleData get messages => _messages;
@@ -31,7 +39,7 @@ class ValidationBuilder {
   /// [optional] is false
   ValidationBuilder reset() {
     validations.clear();
-    return this;
+    return optional ? this : required(_requiredMessage);
   }
 
   /// Adds new item to [validations] list, returns this instance

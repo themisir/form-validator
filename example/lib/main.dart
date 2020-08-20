@@ -45,10 +45,22 @@ class _HomePageState extends State<HomePage> {
               TextFormField(
                 validator:
                     ValidationBuilder().minLength(5).maxLength(50).build(),
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  helperText: 'Min length: 5, max length: 50',
-                ),
+                decoration: InputDecoration(labelText: 'Name'),
+              ),
+              SizedBox(height: 30),
+              TextFormField(
+                validator: ValidationBuilder().phone().build(),
+                decoration: InputDecoration(labelText: 'Phone number'),
+              ),
+              SizedBox(height: 30),
+              TextFormField(
+                validator: ValidationBuilder().ip().build(),
+                decoration: InputDecoration(labelText: 'IPv4 address'),
+              ),
+              SizedBox(height: 30),
+              TextFormField(
+                validator: ValidationBuilder().ipv6().build(),
+                decoration: InputDecoration(labelText: 'IPv6 address'),
               ),
             ],
           ),
