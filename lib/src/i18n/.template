@@ -1,0 +1,10 @@
+{
+  "minLength": "",
+  "maxLength": "",
+  "email": "",
+  "phoneNumber": "",
+  "required": "",
+  "ip": "",
+  "ipV6": "",
+  "url": ""
+}

@@ -1,0 +1,10 @@
+{
+  "minLength": "Bu alan en az {min} harf olmalı",
+  "maxLength": "Bu alan en fazla {max} harf olmalı",
+  "email": "Email adresi geçerli değil",
+  "phoneNumber": "Telefon numarası geçerli değil",
+  "required": "Bu alan zorunludur",
+  "ip": "IP adresi geçerli değil",
+  "ipV6": "IPv6 adresi geçerli değil",
+  "url": "URL adresi geçerli değil"
+}

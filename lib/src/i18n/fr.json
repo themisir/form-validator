@@ -1,0 +1,10 @@
+{
+  "minLength": "Le champ doit contenir au moins {min} caractères",
+  "maxLength": "Le champ ne peut pas contenir plus de {max} caractères",
+  "email": "Adresse email invalide",
+  "phoneNumber": "Numéro de téléphone invalide",
+  "required": "Le champ est requis",
+  "ip": "Le champ n'est pas une adresse IP valide",
+  "ipV6": "Le champ n'est pas une adresse IPv6 valide",
+  "url": "Le champ n'est pas une URL valide"
+}

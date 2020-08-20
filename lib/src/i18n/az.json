@@ -1,0 +1,10 @@
+{
+  "minLength": "Minimum yazı uzunluğu {min} olmalıdır",
+  "maxLength": "Maksimum yazı uzunluğu {max} olmalıdır",
+  "email": "Email düzgün deyil",
+  "phoneNumber": "Telefon nomrəsi yanlışdır",
+  "required": "Boş qoymaq olmaz",
+  "ip": "IP ünvanı düzgün deyil",
+  "ipV6": "IPv6 ünvanı düzgün deyil",
+  "url": "URL ünvanı düzgün deyil"
+}

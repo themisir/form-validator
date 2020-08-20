@@ -1,63 +1,44 @@
 import 'package:form_validator/form_validator.dart';
-import 'package:form_validator/src/i18n/az.dart';
-import 'package:form_validator/src/i18n/de.dart';
-import 'package:form_validator/src/i18n/en.dart';
-import 'package:form_validator/src/i18n/fr.dart';
-import 'package:form_validator/src/i18n/tr.dart';
+import 'package:form_validator/src/localization.dart';
 import 'package:test/test.dart';
 
-final availableLocales = <String, FormValidatorLocale>{
-  'az': LocaleAz(),
-  'en': LocaleEn(),
-  'tr': LocaleTr(),
-  'fr': LocaleFr(),
-  'de': LocaleDe(),
-};
+final availableLocales = ['az', 'en', 'tr', 'fr', 'de'];
 
-void validateLocale(ValidationBuilder builder, FormValidatorLocale locale) {
-  expect(builder.reset().test(null), equals(locale.required()));
+void validateLocale(ValidationBuilder builder, LocaleData locale) {
+  expect(builder.reset().required().test(null), equals(locale.get('required')));
   expect(builder.reset().minLength(5).test('abc'),
-      equals(locale.minLength('abc', 5)));
+      equals(locale.get('minLength', {'min': 5})));
   expect(builder.reset().maxLength(1).test('abc'),
-      equals(locale.maxLength('abc', 1)));
-  expect(builder.reset().email().test('abc'), equals(locale.email('abc')));
+      equals(locale.get('maxLength', {'max': 1})));
+  expect(builder.reset().email().test('abc'), equals(locale.get('email')));
   expect(
-      builder.reset().phone().test('abc'), equals(locale.phoneNumber('abc')));
-  expect(builder.reset().url().test('abc'), equals(locale.url('abc')));
-  expect(builder.reset().ip().test('abc'), equals(locale.ip('abc')));
-  expect(builder.reset().ipv6().test('abc'), equals(locale.ipv6('abc')));
+      builder.reset().phone().test('abc'), equals(locale.get('phoneNumber')));
+  expect(builder.reset().url().test('abc'), equals(locale.get('url')));
+  expect(builder.reset().ip().test('abc'), equals(locale.get('ip')));
+  expect(builder.reset().ipv6().test('abc'), equals(locale.get('ipV6')));
 }
 
 void main() {
-  test('locale names', () {
-    availableLocales.forEach((key, value) {
-      expect(value.name(), equals(key));
-    });
-  });
-
   test('global locale by name', () {
-    availableLocales.forEach((key, value) {
-      ValidationBuilder.setLocale(key);
-      validateLocale(ValidationBuilder(), value);
-    });
-  });
-
-  test('global locale', () {
-    availableLocales.values.forEach((value) {
-      ValidationBuilder.globalLocale = value;
-      validateLocale(ValidationBuilder(), value);
+    availableLocales.forEach((item) {
+      ValidationBuilder.setLocale(item);
+      validateLocale(ValidationBuilder(), FormValidator.locales[item]);
     });
   });
 
   test('local locale by name', () {
-    availableLocales.forEach((key, value) {
-      validateLocale(ValidationBuilder(localeName: key), value);
+    availableLocales.forEach((key) {
+      validateLocale(
+        ValidationBuilder(localeName: key),
+        FormValidator.locales[key],
+      );
     });
   });
 
   test('local locale', () {
-    availableLocales.values.forEach((value) {
-      validateLocale(ValidationBuilder(locale: value), value);
+    availableLocales.forEach((key) {
+      validateLocale(ValidationBuilder(locale: FormValidator.locales[key]),
+          FormValidator.locales[key]);
     });
   });
 

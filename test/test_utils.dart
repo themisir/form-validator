@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:form_validator/form_validator.dart';
+import 'package:form_validator/src/interfaces.dart';
 
 void checkValidation(
   StringValidationCallback validate, {

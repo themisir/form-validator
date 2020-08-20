@@ -1,0 +1,10 @@
+{
+  "minLength": "The field must be at least {min} characters long",
+  "maxLength": "The field must be at most {max} characters long",
+  "email": "The field is not a valid email address",
+  "phoneNumber": "The field is not a valid phone number",
+  "required": "The field is required",
+  "ip": "The field is not a valid IP address",
+  "ipV6": "The field is not a valid IPv6 address",
+  "url": "The field is not a valid URL address"
+}

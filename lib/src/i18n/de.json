@@ -1,0 +1,10 @@
+{
+  "minLength": "Es sind mindestens {min} Zeichen erforderlich",
+  "maxLength": "Es sind maximal {max} Zeichen erlaubt",
+  "email": "Dies ist keine gültige E-Mail",
+  "phoneNumber": "Dies ist keine gültige Telefonnummer",
+  "required": "Dieses Feld ist erforderlich",
+  "ip": "Dies ist keine gütlige IP-Adresse",
+  "ipV6": "Dies ist keine gütlige IPv6-Adresse",
+  "url": "Dies ist keine gültige URL"
+}
