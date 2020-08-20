@@ -18,10 +18,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  GlobalKey<FormState> _form = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
-  void _validate() {
-    _form.currentState.validate();
+  void validate() {
+    formKey.currentState.validate();
+  }
+
+  void changeLocale(value) {
+    setState(() {
+      FormValidator.setLocale(value);
+    });
   }
 
   @override
@@ -29,45 +35,61 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Example'),
+        actions: [
+          PopupMenuButton(
+            icon: Icon(Icons.translate),
+            onSelected: changeLocale,
+            itemBuilder: (context) => FormValidator.locales.keys
+                .map((key) => PopupMenuItem(
+                      value: key,
+                      child: Text(key.toUpperCase()),
+                    ))
+                .toList(),
+          ),
+        ],
       ),
       body: Form(
-        key: _form,
+        key: formKey,
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
-                validator: ValidationBuilder().email().maxLength(50).build(),
+                validator: ValidationBuilder().email().maxLength(50).test,
                 decoration: InputDecoration(labelText: 'Email'),
+                autovalidate: true,
               ),
               SizedBox(height: 30),
               TextFormField(
-                validator:
-                    ValidationBuilder().minLength(5).maxLength(50).build(),
+                validator: ValidationBuilder().minLength(5).maxLength(50).test,
                 decoration: InputDecoration(labelText: 'Name'),
+                autovalidate: true,
               ),
               SizedBox(height: 30),
               TextFormField(
-                validator: ValidationBuilder().phone().build(),
+                validator: ValidationBuilder().phone().test,
                 decoration: InputDecoration(labelText: 'Phone number'),
+                autovalidate: true,
               ),
               SizedBox(height: 30),
               TextFormField(
-                validator: ValidationBuilder().ip().build(),
+                validator: ValidationBuilder().ip().test,
                 decoration: InputDecoration(labelText: 'IPv4 address'),
+                autovalidate: true,
               ),
               SizedBox(height: 30),
               TextFormField(
-                validator: ValidationBuilder().ipv6().build(),
+                validator: ValidationBuilder().ipv6().test,
                 decoration: InputDecoration(labelText: 'IPv6 address'),
+                autovalidate: true,
               ),
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _validate,
+        onPressed: validate,
         tooltip: 'Next',
         child: Icon(Icons.arrow_forward),
       ),

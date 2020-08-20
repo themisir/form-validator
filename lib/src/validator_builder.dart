@@ -7,7 +7,7 @@ class ValidationBuilder {
   ValidationBuilder({
     String localeName,
     LocaleData locale,
-    this.optional,
+    this.optional = false,
     String requiredMessage,
   })  : _messages = locale ??
             (localeName == null
