@@ -1,8 +1,8 @@
-## [0.1.6-next]
+## [0.1.6-next] = 8/21/2020
 
 * Changed localization structure - [#7](https://github.com/TheMisir/form-validator/issues/7)
 
-## [0.1.5]
+## [0.1.5] - 8/21/2020
 
 * Added German language
 
