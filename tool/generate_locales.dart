@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:path/path.dart' show basenameWithoutExtension, join;
+import 'package:path/path.dart' show basenameWithoutExtension, join, normalize;
 
 Directory get workdir {
   var dir = Directory.current;
-  if (dir.path.endsWith('i18n')) {
-    return dir;
+  if (dir.path.endsWith('tool')) {
+    return Directory(normalize(join(dir.path, '../lib/src/i18n/')));
   } else {
     return Directory(join(dir.path, 'lib/src/i18n/'));
   }

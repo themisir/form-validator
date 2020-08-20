@@ -39,7 +39,7 @@ const _enMessages = <String, String>{
 
 const _frMessages = <String, String>{
   'minLength': 'Le champ doit contenir au moins {min} caractères',
-  'maxLength': 'Le champ ne peut pas contenir plus de {min} caractères',
+  'maxLength': 'Le champ ne peut pas contenir plus de {max} caractères',
   'email': 'Adresse email invalide',
   'phoneNumber': 'Numéro de téléphone invalide',
   'required': 'Le champ est requis',
