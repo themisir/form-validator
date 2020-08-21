@@ -13,6 +13,14 @@ void main() {
         invalidValues: ['1234', 'smol', 'haha', 'GO', 'brr']);
   });
 
+  test('validate not blank', () {
+    final validate = ValidationBuilder().notBlank().build();
+
+    checkValidation(validate,
+        validValues: ['longer', 'short', 'hahagobrr', 'boooooo'],
+        invalidValues: [null, '']);
+  });
+
   test('validate max length', () {
     final validate = ValidationBuilder().maxLength(5).build();
 

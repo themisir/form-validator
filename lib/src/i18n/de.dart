@@ -5,12 +5,14 @@ class LocaleDe extends FormValidatorLocale {
   String name() => 'de';
 
   @override
+  String notBlank() => required();
+
+  @override
   String minLength(String v, int n) =>
       'Es sind mindestens $n Zeichen erforderlich';
 
   @override
-  String maxLength(String v, int n) =>
-      'Es sind maximal $n Zeichen erlaubt';
+  String maxLength(String v, int n) => 'Es sind maximal $n Zeichen erlaubt';
 
   @override
   String email(String v) => 'Dies ist keine gültige E-Mail';

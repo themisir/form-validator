@@ -5,6 +5,9 @@ class LocaleTr extends FormValidatorLocale {
   String name() => 'tr';
 
   @override
+  String notBlank() => required();
+
+  @override
   String minLength(String v, int n) => 'Bu alan en az $n harf olmalı';
 
   @override

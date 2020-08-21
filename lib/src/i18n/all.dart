@@ -10,10 +10,10 @@ FormValidatorLocale createLocale(String locale) {
   switch (locale) {
     case 'az':
       return LocaleAz();
-    
+
     case 'de':
       return LocaleDe();
-    
+
     case 'fr':
       return LocaleFr();
 

@@ -104,6 +104,10 @@ class ValidationBuilder {
   ValidationBuilder required([String message]) =>
       add((v) => v == null ? message ?? _locale.required() : null);
 
+  /// Value must not be blank
+  ValidationBuilder notBlank([String message]) =>
+      add((v) => v == null || v.isEmpty ? message ?? _locale.notBlank() : null);
+
   /// Value length must be greater than or equal to [minLength]
   ValidationBuilder minLength(int minLength, [String message]) => add((v) =>
       v.length < minLength ? message ?? _locale.minLength(v, minLength) : null);

@@ -5,6 +5,9 @@ class LocaleEn extends FormValidatorLocale {
   String name() => 'en';
 
   @override
+  String notBlank() => required();
+
+  @override
   String minLength(String v, int n) =>
       'The field must be at least $n characters long';
 

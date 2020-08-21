@@ -5,6 +5,9 @@ class LocaleAz extends FormValidatorLocale {
   String name() => 'az';
 
   @override
+  String notBlank() => required();
+
+  @override
   String minLength(String v, int n) => 'Minimum yazı uzunluğu $n olmalıdır';
 
   @override

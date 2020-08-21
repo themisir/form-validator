@@ -5,6 +5,9 @@ class LocaleFr extends FormValidatorLocale {
   String name() => 'fr';
 
   @override
+  String notBlank() => required();
+
+  @override
   String minLength(String v, int n) =>
       "Le champ doit contenir au moins $n caractère${n > 1 ? 's' : ''}";
 
