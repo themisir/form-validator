@@ -22,7 +22,7 @@ TextFormField(
 ),
 ```
 
-[![browse](https://img.shields.io/badge/-Browse-blue?logo=google-chrome&logoColor=white&style=flat-square)](https://form-validator-9imvcjlq9.vercel.app/)
+[![browse](https://img.shields.io/badge/-Browse-black?logo=google-chrome&logoColor=white&style=flat)](https://form-validator-9imvcjlq9.vercel.app/)
 
 ## Getting Started
 
