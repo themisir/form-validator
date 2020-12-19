@@ -12,6 +12,7 @@ final availableLocales = <String, FormValidatorLocale>{
   'en': LocaleEn(),
   'tr': LocaleTr(),
   'fr': LocaleFr(),
+  'id': LocaleId(),
   'de': LocaleDe(),
   'pt-br': LocalePtBr(),
 };

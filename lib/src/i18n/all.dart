@@ -2,6 +2,7 @@ import '../form_validator_locale.dart';
 import 'az.dart';
 import 'de.dart';
 import 'en.dart';
+import 'id.dart';
 import 'fr.dart';
 import 'pt_br.dart';
 import 'tr.dart';
@@ -17,6 +18,9 @@ FormValidatorLocale createLocale(String locale) {
     case 'fr':
       return LocaleFr();
 
+    case 'id':
+      return LocaleId();
+      
     case 'tr':
       return LocaleTr();
 
