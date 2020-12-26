@@ -36,7 +36,7 @@ void main() async {
     var contents = await File(item.path).readAsString();
     var map = json.decode(contents) as Map;
 
-    buffer.writeln('const _${language}Messages = <String, String>{');
+    buffer.writeln('final _${language}Messages = <String, String>{');
     for (var kv in map.entries) {
       buffer.writeln("  '${kv.key}': ${stringfy(kv.value)},");
     }
@@ -45,7 +45,7 @@ void main() async {
     locales.add(language);
   }
 
-  buffer.writeln('const locales = <String, LocaleData>{');
+  buffer.writeln('final locales = <String, LocaleData>{');
   for (var locale in locales) {
     buffer.writeln("  '$locale': LocaleData('$locale', _${locale}Messages),");
   }
