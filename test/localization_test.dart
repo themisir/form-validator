@@ -3,6 +3,7 @@ import 'package:form_validator/src/i18n/az.dart';
 import 'package:form_validator/src/i18n/de.dart';
 import 'package:form_validator/src/i18n/en.dart';
 import 'package:form_validator/src/i18n/fr.dart';
+import 'package:form_validator/src/i18n/id.dart';
 import 'package:form_validator/src/i18n/pt_br.dart';
 import 'package:form_validator/src/i18n/tr.dart';
 import 'package:test/test.dart';
