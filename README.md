@@ -21,7 +21,8 @@ TextFormField(
   decoration: InputDecoration(labelText: 'Email'),
 ),
 ```
-<a href="https://form-validator-example.netlify.app/" target="_blank">![live demo](https://img.shields.io/badge/open-live%20demo-blueviolet?style=for-the-badge&logo=netlify)</a>
+
+[![browse](https://img.shields.io/badge/-Browse-black?logo=google-chrome&logoColor=white&style=flat)](https://form-validator-9imvcjlq9.vercel.app/)
 
 ## Getting Started
 
@@ -60,7 +61,7 @@ You can set global locale using `ValidationBuilder.setLocale(String localeName)`
  or you can also define locale on `ValidationBuilder({ String localeName })` constructor.
 
 ```dart
-ValidationBuilder.setLocale('en');
+FormValidator.setLocale('en');
 
 // will use *en* localization
 ValidationBuilder()
@@ -174,48 +175,35 @@ TextFormField(
 ),
 ```
 
-
 ### Add custom localization
 
-Firstly you need to extend abstract [`FormValidatorLocale`](https://pub.dev/documentation/form_validator/latest/form_validator/FormValidatorLocale-class.html) class.
+Adding or customizing localization to `form-validator` is easy as eating cake.
+
+- To add single message in multiple languages you can use `.addMessage` function
 
 ```dart
-import 'package:form_validator/form_validator.dart';
-
-class MyValidationLocale extends FormValidatorLocale {
-  @override
-  String name() => "custom";
-
-  @override
-  String required() => "Field is required";
-
+FormValidator.addMessage('messageKey', {
+  'en': 'Message in en',
+  'fr': 'Message in fr',
   ...
-}
+});
 ```
 
-<small><b>PROTIP:</b> You can copy a language file from [/lib/src/i18n](https://github.com/TheMisir/form-validator/tree/master/lib/src/i18n) folder and modify messages as you want.</small>
-
-Then you can use your custom locale class as global or local validation locale.
+- To add multiple messages for a language you can use `.addLocale` function
 
 ```dart
-// global locale
-void main() {
-  ValidationBuilder.globalLocale = MyValidationLocale();
+FormValidator.addLocale('zz', {
+  'messageKey': 'Message translation',
+  'anotherMessageKey': 'Another message',
   ...
-}
-
-// local locale
-final locale = MyValidationLocale();
-
-build(BuildContext context) {
-  final emailValidator = ValidationBuilder(locale: locale)
-    .email()
-    .build();
-  ...
-}
+});
 ```
 
-<small><b>PROTIP:</b> Feel free to add your locale to library by opening pull request  [TheMisir/form-validator](https://github.com/TheMisir/form-validator) to support library.</small>
+- Or you can contribute to `form-validator` by translating messages.
+
+  1. Clone this repository
+  2. Copy `lib/src/i18n/.template` file and save it as `zz.json` where **zz** is [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) locale code for new translation messages.
+  3. Add messages to json file, commit, push and open pull request to this repository. We would be happy to add new translations to our library.
 
 ### Extending `ValidationBuilder`
 
