@@ -3,6 +3,7 @@ import 'az.dart';
 import 'de.dart';
 import 'en.dart';
 import 'id.dart';
+import 'it.dart';
 import 'fr.dart';
 import 'pt_br.dart';
 import 'tr.dart';
@@ -20,6 +21,9 @@ FormValidatorLocale createLocale(String locale) {
 
     case 'id':
       return LocaleId();
+      
+    case 'it':
+      return LocaleIt();
       
     case 'tr':
       return LocaleTr();
