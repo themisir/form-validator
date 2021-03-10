@@ -3,8 +3,8 @@ import 'package:form_validator/form_validator.dart';
 
 void checkValidation(
   StringValidationCallback validate, {
-  List<String> validValues,
-  List<String> invalidValues,
+  List<String>? validValues,
+  List<String>? invalidValues,
 }) {
   if (validValues != null) {
     validValues.forEach((value) {

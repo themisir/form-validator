@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
 
   void _validate() {
-    _form.currentState.validate();
+    _form.currentState!.validate();
   }
 
   @override
@@ -38,13 +38,13 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
-                validator: ValidationBuilder().email().maxLength(50).build(),
+                validator: ValidationBuilder().email().maxLength(50).build() as String? Function(String?)?,
                 decoration: InputDecoration(labelText: 'Email'),
               ),
               SizedBox(height: 30),
               TextFormField(
                 validator:
-                    ValidationBuilder().minLength(5).maxLength(50).build(),
+                    ValidationBuilder().minLength(5).maxLength(50).build() as String? Function(String?)?,
                 decoration: InputDecoration(
                   labelText: 'Name',
                   helperText: 'Min length: 5, max length: 50',
