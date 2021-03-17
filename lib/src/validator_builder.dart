@@ -1,20 +1,23 @@
 import 'form_validator_locale.dart';
 import 'i18n/all.dart';
 
-typedef StringValidationCallback = String Function(String value);
+typedef StringValidationCallback = String? Function(String? value);
 
 // C# Action<T>
 typedef Action<T> = Function(T builder);
 
 class ValidationBuilder {
   ValidationBuilder({
-    String localeName,
+    String? localeName,
     this.optional = false,
-    FormValidatorLocale locale,
+    FormValidatorLocale? locale,
     this.requiredMessage,
   }) : _locale = locale ??
             (localeName == null ? globalLocale : createLocale(localeName)) {
     ArgumentError.checkNotNull(_locale, 'locale');
+    // Unless a builder is optional, the first thing we do is to add a
+    // [required] validator. All subsequent validators should expect
+    // a non-null argument.
     if (optional != true) {
       required(requiredMessage);
     }
@@ -27,7 +30,7 @@ class ValidationBuilder {
   }
 
   final bool optional;
-  final String requiredMessage;
+  final String? requiredMessage;
   final FormValidatorLocale _locale;
   final List<StringValidationCallback> validations = [];
 
@@ -48,7 +51,7 @@ class ValidationBuilder {
   }
 
   /// Tests [value] against defined [validations]
-  String test(String value) {
+  String? test(String? value) {
     for (var validate in validations) {
       // Return null if field is optional and value is null
       if (optional && value == null) {
@@ -101,20 +104,20 @@ class ValidationBuilder {
   }
 
   /// Value must not be null
-  ValidationBuilder required([String message]) =>
+  ValidationBuilder required([String? message]) =>
       add((v) => (v == null || v == '') ? message ?? _locale.required() : null);
 
   /// Value length must be greater than or equal to [minLength]
-  ValidationBuilder minLength(int minLength, [String message]) => add((v) =>
-      v.length < minLength ? message ?? _locale.minLength(v, minLength) : null);
+  ValidationBuilder minLength(int minLength, [String? message]) => add((v) =>
+      v!.length < minLength ? message ?? _locale.minLength(v, minLength) : null);
 
   /// Value length must be less than or equal to [maxLength]
-  ValidationBuilder maxLength(int maxLength, [String message]) => add((v) =>
-      v.length > maxLength ? message ?? _locale.maxLength(v, maxLength) : null);
+  ValidationBuilder maxLength(int maxLength, [String? message]) => add((v) =>
+      v!.length > maxLength ? message ?? _locale.maxLength(v, maxLength) : null);
 
   /// Value must match [regExp]
   ValidationBuilder regExp(RegExp regExp, String message) =>
-      add((v) => regExp.hasMatch(v) ? null : message);
+      add((v) => regExp.hasMatch(v!) ? null : message);
 
   static final RegExp _emailRegExp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9\-\_]+(\.[a-zA-Z]+)*$");
@@ -129,25 +132,25 @@ class ValidationBuilder {
       r'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)');
 
   /// Value must be a well formatted email
-  ValidationBuilder email([String message]) =>
-      add((v) => _emailRegExp.hasMatch(v) ? null : message ?? _locale.email(v));
+  ValidationBuilder email([String? message]) =>
+      add((v) => _emailRegExp.hasMatch(v!) ? null : message ?? _locale.email(v));
 
   /// Value must be a well formatted phone number
-  ValidationBuilder phone([String message]) =>
-      add((v) => !_anyLetter.hasMatch(v) &&
+  ValidationBuilder phone([String? message]) =>
+      add((v) => !_anyLetter.hasMatch(v!) &&
               _phoneRegExp.hasMatch(v.replaceAll(_nonDigitsExp, ''))
           ? null
           : message ?? _locale.phoneNumber(v));
 
   /// Value must be a well formatted IPv4 address
-  ValidationBuilder ip([String message]) =>
-      add((v) => _ipv4RegExp.hasMatch(v) ? null : message ?? _locale.ip(v));
+  ValidationBuilder ip([String? message]) =>
+      add((v) => _ipv4RegExp.hasMatch(v!) ? null : message ?? _locale.ip(v));
 
   /// Value must be a well formatted IPv6 address
-  ValidationBuilder ipv6([String message]) =>
-      add((v) => _ipv6RegExp.hasMatch(v) ? null : message ?? _locale.ipv6(v));
+  ValidationBuilder ipv6([String? message]) =>
+      add((v) => _ipv6RegExp.hasMatch(v!) ? null : message ?? _locale.ipv6(v));
 
   /// Value must be a well formatted IPv6 address
-  ValidationBuilder url([String message]) =>
-      add((v) => _urlRegExp.hasMatch(v) ? null : message ?? _locale.url(v));
+  ValidationBuilder url([String? message]) =>
+      add((v) => _urlRegExp.hasMatch(v!) ? null : message ?? _locale.url(v));
 }
