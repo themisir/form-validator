@@ -5,6 +5,17 @@ import 'package:form_validator/form_validator.dart';
 import 'test_utils.dart';
 
 void main() {
+
+  test('null', () {
+    final validate = ValidationBuilder().url().build();
+    expect(validate(null), equals("The field is required"));
+  });
+
+  test('optional', () {
+    final validate = ValidationBuilder(optional: true).url().build();
+    expect(validate(null), equals(null));
+  });
+
   test('validate min length', () {
     final validate = ValidationBuilder().minLength(5).build();
 

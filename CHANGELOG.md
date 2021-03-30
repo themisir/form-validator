@@ -1,3 +1,7 @@
+## [0.2.0] = 17/03/2021
+
+- Null safety support for Dart 2.12
+
 ## [0.1.7] - 12/26/2020
 
 - Added Indonesian language
