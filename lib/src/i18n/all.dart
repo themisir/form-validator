@@ -7,7 +7,7 @@ import 'it.dart';
 import 'fr.dart';
 import 'pt_br.dart';
 import 'tr.dart';
-import 'zh_CN.dart';
+import 'zh_cn.dart';
 
 FormValidatorLocale createLocale(String locale) {
   switch (locale) {
