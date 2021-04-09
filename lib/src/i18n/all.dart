@@ -1,3 +1,5 @@
+import 'package:form_validator/src/i18n/pl.dart';
+
 import '../form_validator_locale.dart';
 import 'az.dart';
 import 'de.dart';
@@ -32,6 +34,9 @@ FormValidatorLocale createLocale(String locale) {
     case 'pt-br':
       return LocalePtBr();
 
+    case 'pl':
+      return LocalePl();
+      
     case 'zh-CN':
       return LocaleZhCN();
 
@@ -40,7 +45,6 @@ FormValidatorLocale createLocale(String locale) {
       return LocaleEn();
 
     default:
-      throw ArgumentError.value(
-          locale, 'locale', 'Form validation locale is not available.');
+      throw ArgumentError.value(locale, 'locale', 'Form validation locale is not available.');
   }
 }
