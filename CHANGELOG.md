@@ -1,4 +1,4 @@
-## [0.2.0] = 17/03/2021
+## [1.0.0-nullsafety.0] - 4/10/2021
 
 - Null safety support for Dart 2.12
 
