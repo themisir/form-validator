@@ -1,8 +1,10 @@
 import '../form_validator_locale.dart';
 
-class LocaleZhCN extends FormValidatorLocale {
+class LocaleZhCN implements FormValidatorLocale {
+  const LocaleZhCN();
+
   @override
-  String name() => 'zh-CN';
+  String name() => 'zh-cn';
 
   @override
   String minLength(String v, int n) => '此字段必须包含至少$n个字节';

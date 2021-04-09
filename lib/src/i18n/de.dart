@@ -1,6 +1,8 @@
 import '../form_validator_locale.dart';
 
-class LocaleDe extends FormValidatorLocale {
+class LocaleDe implements FormValidatorLocale {
+  const LocaleDe();
+
   @override
   String name() => 'de';
 
@@ -9,8 +11,7 @@ class LocaleDe extends FormValidatorLocale {
       'Es sind mindestens $n Zeichen erforderlich';
 
   @override
-  String maxLength(String v, int n) =>
-      'Es sind maximal $n Zeichen erlaubt';
+  String maxLength(String v, int n) => 'Es sind maximal $n Zeichen erlaubt';
 
   @override
   String email(String v) => 'Dies ist keine gültige E-Mail';

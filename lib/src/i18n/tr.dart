@@ -1,6 +1,8 @@
 import '../form_validator_locale.dart';
 
-class LocaleTr extends FormValidatorLocale {
+class LocaleTr implements FormValidatorLocale {
+  const LocaleTr();
+
   @override
   String name() => 'tr';
 

@@ -1,24 +1,9 @@
 import 'package:form_validator/form_validator.dart';
-import 'package:form_validator/src/i18n/az.dart';
-import 'package:form_validator/src/i18n/de.dart';
-import 'package:form_validator/src/i18n/en.dart';
-import 'package:form_validator/src/i18n/fr.dart';
-import 'package:form_validator/src/i18n/id.dart';
-import 'package:form_validator/src/i18n/pt_br.dart';
-import 'package:form_validator/src/i18n/tr.dart';
-import 'package:form_validator/src/i18n/zh_cn.dart';
+import 'package:form_validator/src/i18n/all.dart';
 import 'package:test/test.dart';
 
-final availableLocales = <String, FormValidatorLocale>{
-  'az': LocaleAz(),
-  'en': LocaleEn(),
-  'tr': LocaleTr(),
-  'fr': LocaleFr(),
-  'id': LocaleId(),
-  'de': LocaleDe(),
-  'pt-br': LocalePtBr(),
-  'zh-CN': LocaleZhCN(),
-};
+final availableLocales = Map<String, FormValidatorLocale>.fromEntries(
+    supportedLocales.map((locale) => MapEntry(locale, createLocale(locale))));
 
 void validateLocale(ValidationBuilder builder, FormValidatorLocale locale) {
   expect(builder.reset().test(null), equals(locale.required()));
