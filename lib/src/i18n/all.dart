@@ -9,6 +9,7 @@ import 'it.dart';
 import 'fr.dart';
 import 'pt_br.dart';
 import 'tr.dart';
+import 'zh_cn.dart';
 
 FormValidatorLocale createLocale(String locale) {
   switch (locale) {
@@ -35,6 +36,9 @@ FormValidatorLocale createLocale(String locale) {
 
     case 'pl':
       return LocalePl();
+      
+    case 'zh-CN':
+      return LocaleZhCN();
 
     case 'en':
     case 'default':

@@ -6,6 +6,7 @@ import 'package:form_validator/src/i18n/fr.dart';
 import 'package:form_validator/src/i18n/id.dart';
 import 'package:form_validator/src/i18n/pt_br.dart';
 import 'package:form_validator/src/i18n/tr.dart';
+import 'package:form_validator/src/i18n/zh_cn.dart';
 import 'package:test/test.dart';
 
 final availableLocales = <String, FormValidatorLocale>{
@@ -16,6 +17,7 @@ final availableLocales = <String, FormValidatorLocale>{
   'id': LocaleId(),
   'de': LocaleDe(),
   'pt-br': LocalePtBr(),
+  'zh-CN': LocaleZhCN(),
 };
 
 void validateLocale(ValidationBuilder builder, FormValidatorLocale locale) {
