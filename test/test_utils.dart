@@ -3,16 +3,16 @@ import 'package:form_validator/form_validator.dart';
 
 void checkValidation(
   StringValidationCallback validate, {
-  List<String>? validValues,
-  List<String>? invalidValues,
+  List<String?> validValues = const [],
+  List<String?> invalidValues = const [],
 }) {
-  if (validValues != null) {
+  if (validValues.isNotEmpty) {
     validValues.forEach((value) {
       expect(validate(value), isNull, reason: '"$value" is valid value');
     });
   }
 
-  if (invalidValues != null) {
+  if (invalidValues.isNotEmpty) {
     invalidValues.forEach((value) {
       expect(validate(value), isNotNull, reason: '"$value" is invalid value');
     });

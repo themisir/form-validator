@@ -18,9 +18,7 @@ class ValidationBuilder {
     // Unless a builder is optional, the first thing we do is to add a
     // [required] validator. All subsequent validators should expect
     // a non-null argument.
-    if (optional != true) {
-      required(requiredMessage);
-    }
+    if (!optional) required(requiredMessage);
   }
 
   static FormValidatorLocale globalLocale = createLocale('default');
@@ -65,7 +63,7 @@ class ValidationBuilder {
   String? test(String? value) {
     for (var validate in validations) {
       // Return null if field is optional and value is null
-      if (optional && value == null) {
+      if (optional && (value == null || value.isEmpty)) {
         return null;
       }
 
@@ -118,7 +116,7 @@ class ValidationBuilder {
 
   /// Value must not be null
   ValidationBuilder required([String? message]) =>
-      add((v) => (v == null || v == '') ? message ?? _locale.required() : null);
+      add((v) => v == null || v.isEmpty ? message ?? _locale.required() : null);
 
   /// Value length must be greater than or equal to [minLength]
   ValidationBuilder minLength(int minLength, [String? message]) =>
