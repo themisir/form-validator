@@ -1,3 +1,7 @@
+## [1.0.0-nullsafety.1] - 4/10/2021
+
+- Fixed `.required()` not working - [#17](https://github.com/TheMisir/form-validator/issues/17)
+
 ## [1.0.0-nullsafety.0] - 4/10/2021
 
 - Null safety support for Dart 2.12

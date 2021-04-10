@@ -1,6 +1,6 @@
 name: form_validator
 description: Simplest form validation library for flutter's form field widgets
-version: 1.0.0-nullsafety.0
+version: 1.0.0-nullsafety.1
 homepage: https://github.com/TheMisir/form-validator
 
 environment:
