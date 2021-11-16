@@ -15,7 +15,8 @@ class LocaleCaEs implements FormValidatorLocale {
       'El camp ha de tenir com a màxim $n caràcters';
 
   @override
-  String email(String v) => 'El camp no és una adreça de correu electrònic vàlida';
+  String email(String v) =>
+      'El camp no és una adreça de correu electrònic vàlida';
 
   @override
   String phoneNumber(String v) => 'El camp no és un número de telèfon vàlid';

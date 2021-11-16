@@ -1,6 +1,5 @@
-import 'package:test/test.dart';
-
 import 'package:form_validator/form_validator.dart';
+import 'package:test/test.dart';
 
 import 'test_utils.dart';
 

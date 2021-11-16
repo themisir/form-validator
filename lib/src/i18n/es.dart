@@ -15,7 +15,8 @@ class LocaleEs implements FormValidatorLocale {
       'El campo debe tener como máximo $n caracteres';
 
   @override
-  String email(String v) => 'El campo no es una dirección de correo electrónico válida';
+  String email(String v) =>
+      'El campo no es una dirección de correo electrónico válida';
 
   @override
   String phoneNumber(String v) => 'El campo no es un número de teléfono válido';
