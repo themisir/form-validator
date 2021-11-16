@@ -1,3 +1,7 @@
+## [1.0.1] - 11/17/2021
+
+- Added Espanol language support - [#28](https://github.com/themisir/form-validator/pull/28)
+
 ## [1.0.0-nullsafety.1] - 4/10/2021
 
 - Fixed `.required()` not working - [#17](https://github.com/TheMisir/form-validator/issues/17)
