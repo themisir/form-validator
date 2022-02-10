@@ -1,4 +1,4 @@
-import '../form_validator_locale.dart';
+import '../locale.dart';
 
 class LocaleJp implements FormValidatorLocale {
   const LocaleJp();
@@ -7,12 +7,10 @@ class LocaleJp implements FormValidatorLocale {
   String name() => 'jp';
 
   @override
-  String minLength(String v, int n) =>
-      'フィールドは$n文字以上である必要があります';
+  String minLength(String v, int n) => 'フィールドは$n文字以上である必要があります';
 
   @override
-  String maxLength(String v, int n) =>
-      'フィールドの長さは最大$n文字である必要があります';
+  String maxLength(String v, int n) => 'フィールドの長さは最大$n文字である必要があります';
 
   @override
   String email(String v) => '有効なメールアドレスではありません';

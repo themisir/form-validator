@@ -1,32 +1,18 @@
-import 'package:form_validator/src/i18n/pl.dart';
-
-import '../form_validator_locale.dart';
+import '../locale.dart';
 import 'az.dart';
 import 'ca_es.dart';
 import 'de.dart';
 import 'en.dart';
 import 'es.dart';
 import 'fr.dart';
+import 'he.dart';
 import 'id.dart';
 import 'it.dart';
+import 'jp.dart';
+import 'pl.dart';
 import 'pt_br.dart';
 import 'tr.dart';
 import 'zh_cn.dart';
-
-const supportedLocales = <String>{
-  'az',
-  'ca-es',
-  'de',
-  'es',
-  'fr',
-  'id',
-  'it',
-  'tr',
-  'pt-br',
-  'pl',
-  'zh-cn',
-  'en',
-};
 
 const localeMap = <String, FormValidatorLocale>{
   'az': LocaleAz(),
@@ -41,7 +27,11 @@ const localeMap = <String, FormValidatorLocale>{
   'pl': LocalePl(),
   'zh-cn': LocaleZhCN(),
   'en': LocaleEn(),
+  'he': LocaleHe(),
+  'jp': LocaleJp(),
 };
+
+final supportedLocales = localeMap.keys.toList();
 
 FormValidatorLocale createLocale(String locale) {
   if (locale == 'default') locale = 'en';

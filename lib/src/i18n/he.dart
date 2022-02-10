@@ -1,4 +1,4 @@
-import '../form_validator_locale.dart';
+import '../locale.dart';
 
 class LocaleHe implements FormValidatorLocale {
   const LocaleHe();
@@ -7,12 +7,10 @@ class LocaleHe implements FormValidatorLocale {
   String name() => 'he';
 
   @override
-  String minLength(String v, int n) =>
-      'השדה חייב להכיל לפחות $n תווים';
+  String minLength(String v, int n) => 'השדה חייב להכיל לפחות $n תווים';
 
   @override
-  String maxLength(String v, int n) =>
-      'השדה חייב להכיל פחות מ- $n תווים';
+  String maxLength(String v, int n) => 'השדה חייב להכיל פחות מ- $n תווים';
 
   @override
   String email(String v) => 'השדה מכיל כתובת מייל לא תקינה';

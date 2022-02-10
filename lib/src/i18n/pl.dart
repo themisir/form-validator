@@ -1,4 +1,4 @@
-import '../form_validator_locale.dart';
+import '../locale.dart';
 
 class LocalePl implements FormValidatorLocale {
   const LocalePl();
