@@ -1,3 +1,9 @@
+## [1.0.2] - 10/2/2022
+
+- Added Herbew language support - [#32](https://github.com/themisir/form-validator/pull/32)
+- Added Japaniese language support - [#33](https://github.com/themisir/form-validator/pull/33)
+- Minor internal refactoring
+
 ## [1.0.1] - 11/17/2021
 
 - Added Espanol language support - [#28](https://github.com/themisir/form-validator/pull/28)
@@ -46,3 +52,6 @@
 ## [0.1.0] - 6/7/2020
 
 - Initial release
+
+
+_Timestamps are in MM/DD/YYYY format_
