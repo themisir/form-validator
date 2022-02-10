@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: ["2.12", "dev"]
+        version: ["2.12", "2.14", "2.15"]
     container:
-      image:  google/dart:${{ matrix.version }}
+      image: google/dart:${{ matrix.version }}
     steps:
       - uses: actions/checkout@v1
       - name: Install dependencies
