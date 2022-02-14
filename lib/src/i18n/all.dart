@@ -8,7 +8,7 @@ import 'fr.dart';
 import 'he.dart';
 import 'id.dart';
 import 'it.dart';
-import 'jp.dart';
+import 'ja.dart';
 import 'pl.dart';
 import 'pt_br.dart';
 import 'tr.dart';
@@ -28,7 +28,7 @@ const localeMap = <String, FormValidatorLocale>{
   'zh-cn': LocaleZhCN(),
   'en': LocaleEn(),
   'he': LocaleHe(),
-  'jp': LocaleJp(),
+  'ja': LocaleJa(),
 };
 
 final supportedLocales = localeMap.keys.toList();

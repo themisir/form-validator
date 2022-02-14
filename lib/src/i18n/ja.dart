@@ -1,10 +1,10 @@
 import '../locale.dart';
 
-class LocaleJp implements FormValidatorLocale {
-  const LocaleJp();
+class LocaleJa implements FormValidatorLocale {
+  const LocaleJa();
 
   @override
-  String name() => 'jp';
+  String name() => 'ja';
 
   @override
   String minLength(String v, int n) => 'フィールドは$n文字以上である必要があります';
