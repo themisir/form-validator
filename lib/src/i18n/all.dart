@@ -12,6 +12,7 @@ import 'ja.dart';
 import 'jp.dart';
 import 'pl.dart';
 import 'pt_br.dart';
+import 'ru.dart';
 import 'tr.dart';
 import 'zh_cn.dart';
 
@@ -25,6 +26,7 @@ const localeMap = <String, FormValidatorLocale>{
   'it': LocaleIt(),
   'tr': LocaleTr(),
   'pt-br': LocalePtBr(),
+  'ru': LocaleRu(),
   'pl': LocalePl(),
   'zh-cn': LocaleZhCN(),
   'en': LocaleEn(),
