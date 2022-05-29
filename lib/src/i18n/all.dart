@@ -15,6 +15,7 @@ import 'pt_br.dart';
 import 'ru.dart';
 import 'tr.dart';
 import 'zh_cn.dart';
+import 'th.dart';
 
 const localeMap = <String, FormValidatorLocale>{
   'az': LocaleAz(),
@@ -33,6 +34,7 @@ const localeMap = <String, FormValidatorLocale>{
   'he': LocaleHe(),
   'ja': LocaleJa(),
   'jp': LocaleJp(),
+  'th': LocaleTh(),
 };
 
 final supportedLocales = localeMap.keys.toList();
