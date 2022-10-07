@@ -9,14 +9,13 @@ import 'he.dart';
 import 'id.dart';
 import 'it.dart';
 import 'ja.dart';
-import 'jp.dart';
 import 'pl.dart';
 import 'pt_br.dart';
+import 'ro.dart';
 import 'ru.dart';
+import 'th.dart';
 import 'tr.dart';
 import 'zh_cn.dart';
-import 'th.dart';
-import 'ro.dart';
 
 const localeMap = <String, FormValidatorLocale>{
   'az': LocaleAz(),
@@ -34,10 +33,12 @@ const localeMap = <String, FormValidatorLocale>{
   'en': LocaleEn(),
   'he': LocaleHe(),
   'ja': LocaleJa(),
-  'jp': LocaleJp(),
+  'jp': LocaleJa(), // todo: remove this with the next major version [1]
   'th': LocaleTh(),
   'ro': LocaleRo(),
 };
+
+// [1] - https://github.com/themisir/form-validator/pull/35
 
 final supportedLocales = localeMap.keys.toList();
 
