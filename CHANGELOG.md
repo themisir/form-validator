@@ -1,4 +1,11 @@
-## [1.0.2] - 10/2/2022
+## [1.0.3] - 10/7/2022
+
+- Added Russian language support - [#36](https://github.com/themisir/form-validator/pull/36)
+- Added Thai language support - [#39](https://github.com/themisir/form-validator/pull/39), [#40](https://github.com/themisir/form-validator/pull/40)
+- Added Romanian language support - [#42](https://github.com/themisir/form-validator/pull/42)
+- Improved Japanese messages - [#35](https://github.com/themisir/form-validator/pull/35), [#44](https://github.com/themisir/form-validator/pull/44)
+
+## [1.0.2] - 2/10/2022
 
 - Added Herbew language support - [#32](https://github.com/themisir/form-validator/pull/32)
 - Added Japaniese language support - [#33](https://github.com/themisir/form-validator/pull/33)
