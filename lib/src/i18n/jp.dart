@@ -7,26 +7,26 @@ class LocaleJp implements FormValidatorLocale {
   String name() => 'jp';
 
   @override
-  String minLength(String v, int n) => 'フィールドは$n文字以上である必要があります';
+  String minLength(String v, int n) => '$n文字以上入力してください';
 
   @override
-  String maxLength(String v, int n) => 'フィールドの長さは最大$n文字である必要があります';
+  String maxLength(String v, int n) => '最大$n文字以内で入力してください';
 
   @override
-  String email(String v) => '有効なメールアドレスではありません';
+  String email(String v) => '有効なメールアドレスの形式ではありません';
 
   @override
-  String phoneNumber(String v) => '有効な電話番号ではありません';
+  String phoneNumber(String v) => '有効な電話番号の形式ではありません';
 
   @override
-  String required() => 'は必須項目です';
+  String required() => '必須項目です';
 
   @override
-  String ip(String v) => '有効なIPではありません';
+  String ip(String v) => '有効なIPアドレスの形式ではありません';
 
   @override
-  String ipv6(String v) => '有効なIPv6xではありません';
+  String ipv6(String v) => '有効なIPv6の形式ではありません';
 
   @override
-  String url(String v) => '有効なxxxではありません';
+  String url(String v) => '有効なURLの形式ではありません';
 }
