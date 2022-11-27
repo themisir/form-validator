@@ -15,6 +15,7 @@ import 'ro.dart';
 import 'ru.dart';
 import 'th.dart';
 import 'tr.dart';
+import 'vi.dart';
 import 'zh_cn.dart';
 
 const localeMap = <String, FormValidatorLocale>{
@@ -35,6 +36,7 @@ const localeMap = <String, FormValidatorLocale>{
   'ja': LocaleJa(),
   'jp': LocaleJa(), // todo: remove this with the next major version [1]
   'th': LocaleTh(),
+  'vi': LocaleVi(),
   'ro': LocaleRo(),
 };
 
