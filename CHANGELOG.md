@@ -1,3 +1,7 @@
+## [1.0.4] - 27.11.2022
+
+- Added Vietnamese language support - [#48](https://github.com/themisir/form-validator/pull/48)
+
 ## [1.0.3] - 07.10.2022
 
 - Added Russian language support - [#36](https://github.com/themisir/form-validator/pull/36)
