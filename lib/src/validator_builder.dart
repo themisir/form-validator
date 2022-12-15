@@ -27,7 +27,7 @@ class ValidationBuilder {
   }
 
   static final RegExp _emailRegExp = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9\-\_]+(\.[a-zA-Z]+)*$");
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-\/=?^_`{|}~]{1,30}+@[a-zA-Z0-9\-\_]{1,30}+(\.[a-zA-Z]{1,20}+)*$");
   static final RegExp _nonDigitsExp = RegExp(r'[^\d]');
   static final RegExp _anyLetter = RegExp(r'[A-Za-z]');
   static final RegExp _phoneRegExp = RegExp(r'^\d{7,15}$');
