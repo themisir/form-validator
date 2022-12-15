@@ -9,6 +9,7 @@ import 'he.dart';
 import 'id.dart';
 import 'it.dart';
 import 'ja.dart';
+import 'nl.dart';
 import 'pl.dart';
 import 'pt_br.dart';
 import 'ro.dart';
@@ -38,6 +39,7 @@ const localeMap = <String, FormValidatorLocale>{
   'th': LocaleTh(),
   'vi': LocaleVi(),
   'ro': LocaleRo(),
+  'nl': LocaleNl(),
 };
 
 // [1] - https://github.com/themisir/form-validator/pull/35
