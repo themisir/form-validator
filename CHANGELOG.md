@@ -1,3 +1,8 @@
+## [2.0.0] - 15.12.2022
+
+- Added Dutch language support - [#49](https://github.com/themisir/form-validator/pull/49)
+- **BREAKING**: Removed the `jp` language code for Japanese localizations
+
 ## [1.0.4] - 27.11.2022
 
 - Added Vietnamese language support - [#48](https://github.com/themisir/form-validator/pull/48)
