@@ -35,14 +35,11 @@ const localeMap = <String, FormValidatorLocale>{
   'en': LocaleEn(),
   'he': LocaleHe(),
   'ja': LocaleJa(),
-  'jp': LocaleJa(), // todo: remove this with the next major version [1]
   'th': LocaleTh(),
   'vi': LocaleVi(),
   'ro': LocaleRo(),
   'nl': LocaleNl(),
 };
-
-// [1] - https://github.com/themisir/form-validator/pull/35
 
 final supportedLocales = localeMap.keys.toList();
 
