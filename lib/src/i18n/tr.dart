@@ -7,19 +7,19 @@ class LocaleTr implements FormValidatorLocale {
   String name() => 'tr';
 
   @override
-  String minLength(String v, int n) => 'Bu alan en az $n harf olmalı';
+  String minLength(String v, int n) => 'Bu alan en az $n karakter içermelidir';
 
   @override
-  String maxLength(String v, int n) => 'Bu alan en fazla $n harf olmalı';
+  String maxLength(String v, int n) => 'Bu alan $n karakterden uzun olamaz';
 
   @override
-  String email(String v) => 'Email adresi geçerli değil';
+  String email(String v) => 'Lütfen doğru bir E-Posta adresi girin';
 
   @override
-  String phoneNumber(String v) => 'Telefon numarası geçerli değil';
+  String phoneNumber(String v) => 'Lütfen doğru bir telefon numarası girin';
 
   @override
-  String required() => 'Bu alan zorunludur';
+  String required() => 'Lütfen doldurun';
 
   @override
   String ip(String v) => 'IP adresi geçerli değil';
