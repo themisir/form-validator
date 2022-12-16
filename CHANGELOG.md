@@ -1,3 +1,8 @@
+## [2.1.0] - 17.12.2022
+
+- Updated messages for Turkish language - [#50](https://github.com/themisir/form-validator/pull/50)
+- Added `options` constructor argument and `ValidationBuilder.globalOptions` to customize validation
+
 ## [2.0.0] - 15.12.2022
 
 - Added Dutch language support - [#49](https://github.com/themisir/form-validator/pull/49)
