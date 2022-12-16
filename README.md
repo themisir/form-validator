@@ -2,7 +2,7 @@
 
 [![pub package](https://img.shields.io/pub/v/form_validator.svg)](https://pub.dev/packages/form_validator)
 [![GitHub](https://img.shields.io/github/license/TheMisir/form-validator)](https://github.com/TheMisir/form-validator/blob/master/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/themisir/form-validator/Test)](https://github.com/TheMisir/form-validator/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/themisir/form-validator/test.yml?branch=master)](https://github.com/TheMisir/form-validator/actions)
 [![codecov](https://codecov.io/gh/TheMisir/form-validator/branch/master/graph/badge.svg)](https://codecov.io/gh/TheMisir/form-validator)
 
 Simplest form validation for flutter form widgets.
