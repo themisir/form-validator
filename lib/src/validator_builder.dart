@@ -1,5 +1,6 @@
 import 'i18n/all.dart';
 import 'locale.dart';
+import 'validator_options.dart';
 
 typedef StringValidationCallback = String? Function(String? value);
 
@@ -8,12 +9,14 @@ typedef Action<T> = Function(T builder);
 
 class ValidationBuilder {
   ValidationBuilder({
-    String? localeName,
     this.optional = false,
-    FormValidatorLocale? locale,
     this.requiredMessage,
-  }) : _locale = locale ??
-            (localeName == null ? globalLocale : createLocale(localeName)) {
+    ValidatorOptions? options,
+    String? localeName,
+    FormValidatorLocale? locale,
+  })  : _locale = locale ??
+            (localeName == null ? globalLocale : createLocale(localeName)),
+        _options = options ?? globalOptions {
     ArgumentError.checkNotNull(_locale, 'locale');
     // Unless a builder is optional, the first thing we do is to add a
     // [required] validator. All subsequent validators should expect
@@ -21,27 +24,18 @@ class ValidationBuilder {
     if (!optional) required(requiredMessage);
   }
 
+  static ValidatorOptions globalOptions = ValidatorOptions();
+
   static FormValidatorLocale globalLocale = createLocale('default');
   static void setLocale(String localeName) {
     globalLocale = createLocale(localeName);
   }
 
-  static final RegExp _emailRegExp = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9\-\_]+(\.[a-zA-Z]+)*$");
-  static final RegExp _nonDigitsExp = RegExp(r'[^\d]');
-  static final RegExp _anyLetter = RegExp(r'[A-Za-z]');
-  static final RegExp _phoneRegExp = RegExp(r'^\d{7,15}$');
-  static final RegExp _ipv4RegExp = RegExp(
-      r'^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$');
-  static final RegExp _ipv6RegExp = RegExp(
-      r'^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$');
-  static final RegExp _urlRegExp = RegExp(
-      r'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)');
-
   final bool optional;
   final String? requiredMessage;
   final FormValidatorLocale _locale;
   final List<StringValidationCallback> validations = [];
+  final ValidatorOptions _options;
 
   /// Clears validation list and adds required validation if
   /// [optional] is false
@@ -135,25 +129,29 @@ class ValidationBuilder {
       add((v) => regExp.hasMatch(v!) ? null : message);
 
   /// Value must be a well formatted email
-  ValidationBuilder email([String? message]) => add(
-      (v) => _emailRegExp.hasMatch(v!) ? null : message ?? _locale.email(v));
+  ValidationBuilder email([String? message]) => add((v) =>
+      _options.emailRegExp.hasMatch(v!) ? null : message ?? _locale.email(v));
+
+  // needed for short circuiting the full validation
+  static final RegExp _anyLetter = RegExp(r'[A-Za-z]');
+  static final RegExp _nonDigitsExp = RegExp(r'[^\d]');
 
   /// Value must be a well formatted phone number
   ValidationBuilder phone([String? message]) =>
       add((v) => !_anyLetter.hasMatch(v!) &&
-              _phoneRegExp.hasMatch(v.replaceAll(_nonDigitsExp, ''))
+              _options.phoneRegExp.hasMatch(v.replaceAll(_nonDigitsExp, ''))
           ? null
           : message ?? _locale.phoneNumber(v));
 
   /// Value must be a well formatted IPv4 address
-  ValidationBuilder ip([String? message]) =>
-      add((v) => _ipv4RegExp.hasMatch(v!) ? null : message ?? _locale.ip(v));
+  ValidationBuilder ip([String? message]) => add((v) =>
+      _options.ipv4RegExp.hasMatch(v!) ? null : message ?? _locale.ip(v));
 
   /// Value must be a well formatted IPv6 address
-  ValidationBuilder ipv6([String? message]) =>
-      add((v) => _ipv6RegExp.hasMatch(v!) ? null : message ?? _locale.ipv6(v));
+  ValidationBuilder ipv6([String? message]) => add((v) =>
+      _options.ipv6RegExp.hasMatch(v!) ? null : message ?? _locale.ipv6(v));
 
   /// Value must be a well formatted URL address
-  ValidationBuilder url([String? message]) =>
-      add((v) => _urlRegExp.hasMatch(v!) ? null : message ?? _locale.url(v));
+  ValidationBuilder url([String? message]) => add((v) =>
+      _options.urlRegExp.hasMatch(v!) ? null : message ?? _locale.url(v));
 }
