@@ -7,12 +7,10 @@ class LocaleTh implements FormValidatorLocale {
   String name() => 'th';
 
   @override
-  String minLength(String v, int n) =>
-      'ความยาวอย่างน้อย $n อักขระ';
+  String minLength(String v, int n) => 'ความยาวอย่างน้อย $n อักขระ';
 
   @override
-  String maxLength(String v, int n) =>
-      'ความยาวไม่เกิน $n อักขระ';
+  String maxLength(String v, int n) => 'ความยาวไม่เกิน $n อักขระ';
 
   @override
   String email(String v) => 'ที่อยู่อีเมลที่ถูกต้อง';

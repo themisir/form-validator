@@ -7,12 +7,10 @@ class LocaleVi implements FormValidatorLocale {
   String name() => 'vi';
 
   @override
-  String minLength(String v, int n) =>
-      'Trường này phải ít nhất $n ký tự';
+  String minLength(String v, int n) => 'Trường này phải ít nhất $n ký tự';
 
   @override
-  String maxLength(String v, int n) =>
-      'Trường này phải dài tối đa $n ký tự';
+  String maxLength(String v, int n) => 'Trường này phải dài tối đa $n ký tự';
 
   @override
   String email(String v) => 'Email không hợp lệ';

@@ -7,12 +7,10 @@ class LocaleNl implements FormValidatorLocale {
   String name() => 'nl';
 
   @override
-  String minLength(String v, int n) =>
-      'Minimaal $n karakters verplicht';
+  String minLength(String v, int n) => 'Minimaal $n karakters verplicht';
 
   @override
-  String maxLength(String v, int n) =>
-      'Maximaal $n karakters verplicht';
+  String maxLength(String v, int n) => 'Maximaal $n karakters verplicht';
 
   @override
   String email(String v) => 'Ongeldig e-mailadres';
