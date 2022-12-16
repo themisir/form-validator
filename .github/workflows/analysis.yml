@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: axel-op/dart-package-analyzer@stable
+      - uses: axel-op/dart-package-analyzer@v3
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           minAnnotationLevel: info
