@@ -1,4 +1,5 @@
 import '../locale.dart';
+import 'ar.dart';
 import 'az.dart';
 import 'ca_es.dart';
 import 'de.dart';
@@ -20,6 +21,7 @@ import 'vi.dart';
 import 'zh_cn.dart';
 
 const localeMap = <String, FormValidatorLocale>{
+  'ar': LocaleAr(),
   'az': LocaleAz(),
   'ca-es': LocaleCaEs(),
   'de': LocaleDe(),
