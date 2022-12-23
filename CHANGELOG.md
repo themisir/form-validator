@@ -1,3 +1,7 @@
+## [2.1.1] - 23.12.2022
+
+- Added Arabic (generic) language support - [#52](https://github.com/themisir/form-validator/pull/52)
+
 ## [2.1.0] - 17.12.2022
 
 - Updated messages for Turkish language - [#50](https://github.com/themisir/form-validator/pull/50)
