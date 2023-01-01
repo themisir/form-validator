@@ -2,12 +2,12 @@ import 'i18n/all.dart';
 import 'locale.dart';
 import 'validator_options.dart';
 
-typedef StringValidationCallback = String? Function(String? value);
+typedef StringValidationCallback<T> = String? Function(T? value);
 
 // C# Action<T>
 typedef Action<T> = Function(T builder);
 
-class ValidationBuilder {
+class ValidationBuilder<T> {
   ValidationBuilder({
     this.optional = false,
     this.requiredMessage,
@@ -54,10 +54,10 @@ class ValidationBuilder {
   }
 
   /// Tests [value] against defined [validations]
-  String? test(String? value) {
+  String? test(T? value) {
     for (var validate in validations) {
       // Return null if field is optional and value is null
-      if (optional && (value == null || value.isEmpty)) {
+      if (optional && (value == null || value.toString().isEmpty)) {
         return null;
       }
 
@@ -71,7 +71,7 @@ class ValidationBuilder {
   }
 
   /// Returns a validator function for FormInput
-  StringValidationCallback build() => test;
+  StringValidationCallback<T> build() => test;
 
   /// Throws error only if [left] and [right] validators throw error same time.
   /// If [reverse] is true left builder's error will be displayed otherwise
@@ -109,8 +109,8 @@ class ValidationBuilder {
   }
 
   /// Value must not be null
-  ValidationBuilder required([String? message]) =>
-      add((v) => v == null || v.isEmpty ? message ?? _locale.required() : null);
+  ValidationBuilder required([String? message]) => add((v) =>
+      v == null || v.toString().isEmpty ? message ?? _locale.required() : null);
 
   /// Value length must be greater than or equal to [minLength]
   ValidationBuilder minLength(int minLength, [String? message]) =>
