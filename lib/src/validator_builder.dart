@@ -7,7 +7,7 @@ typedef StringValidationCallback<T> = String? Function(T? value);
 // C# Action<T>
 typedef Action<T> = Function(T builder);
 
-class ValidationBuilder<T> {
+class ValidationBuilder {
   ValidationBuilder({
     this.optional = false,
     this.requiredMessage,
@@ -54,10 +54,10 @@ class ValidationBuilder<T> {
   }
 
   /// Tests [value] against defined [validations]
-  String? test(T? value) {
+  String? test(var value) {
     for (var validate in validations) {
       // Return null if field is optional and value is null
-      if (optional && (value == null || value.toString().isEmpty)) {
+      if (optional && (value == null || value.isEmpty)) {
         return null;
       }
 
@@ -71,7 +71,7 @@ class ValidationBuilder<T> {
   }
 
   /// Returns a validator function for FormInput
-  StringValidationCallback<T> build() => test;
+  StringValidationCallback build() => test;
 
   /// Throws error only if [left] and [right] validators throw error same time.
   /// If [reverse] is true left builder's error will be displayed otherwise
