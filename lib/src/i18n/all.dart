@@ -19,10 +19,12 @@ import 'th.dart';
 import 'tr.dart';
 import 'vi.dart';
 import 'zh_cn.dart';
+import 'bn.dart';
 
 const localeMap = <String, FormValidatorLocale>{
   'ar': LocaleAr(),
   'az': LocaleAz(),
+  'bn': LocaleBn(),
   'ca-es': LocaleCaEs(),
   'de': LocaleDe(),
   'es': LocaleEs(),
