@@ -10,6 +10,7 @@ import 'he.dart';
 import 'id.dart';
 import 'it.dart';
 import 'ja.dart';
+import 'ne.dart';
 import 'nl.dart';
 import 'pl.dart';
 import 'pt_br.dart';
@@ -43,6 +44,7 @@ const localeMap = <String, FormValidatorLocale>{
   'vi': LocaleVi(),
   'ro': LocaleRo(),
   'nl': LocaleNl(),
+  'ne': LocaleNe(),
 };
 
 final supportedLocales = localeMap.keys.toList();
