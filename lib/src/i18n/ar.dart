@@ -8,28 +8,27 @@ class LocaleAr implements FormValidatorLocale {
 
   @override
   String minLength(String v, int n) =>
-      'يجب أن يكون عدد الأحرف على الأقل $n حروف';
+      'يجب أن يكون عدد الأحرف على الأقل $n حرفًا';
 
   @override
   String maxLength(String v, int n) =>
-      'يجب أن لا يزيد عدد الأحرف عن $n حرف';
-
-
-  @override
-  String email(String v) => 'برجاء إدخال عنوان بريد إلكتروني صحيح';
+      'يجب ألا يزيد عدد الأحرف عن $n حرفًا';
 
   @override
-  String phoneNumber(String v) => 'برجاء إدخال رقم هاتف صحيح';
+  String email(String v) => 'يرجى إدخال عنوان بريد إلكتروني صحيح';
 
   @override
-  String required() => 'برجاء ملء هذه الخانة';
+  String phoneNumber(String v) => 'يرجى إدخال رقم هاتف صحيح';
 
   @override
-  String ip(String v) => 'برجاء إدخال عنوان IP صحيح';
+  String required() => 'يرجى ملء هذه الخانة';
 
   @override
-  String ipv6(String v) => 'برجاء إدخال عنوان IPv6 صحيح';
+  String ip(String v) => 'يرجى إدخال عنوان IP صحيح';
 
   @override
-  String url(String v) => 'برجاء إدخال عنوان URL صحيح';
+  String ipv6(String v) => 'يرجى إدخال عنوان IPv6 صحيح';
+
+  @override
+  String url(String v) => 'يرجى إدخال عنوان URL صحيح';
 }
