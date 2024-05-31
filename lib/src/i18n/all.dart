@@ -10,6 +10,7 @@ import 'he.dart';
 import 'id.dart';
 import 'it.dart';
 import 'ja.dart';
+import 'ko.dart';
 import 'nl.dart';
 import 'pl.dart';
 import 'pt_br.dart';
@@ -22,7 +23,7 @@ import 'zh_cn.dart';
 import 'bn.dart';
 import 'ko.dart';
 
-const localeMap = <String, FormValidatorLocale>{
+final localeMap = <String, FormValidatorLocale>{
   'ar': LocaleAr(),
   'az': LocaleAz(),
   'bn': LocaleBn(),
