@@ -217,6 +217,19 @@ build(BuildContext context) {
 
 <small><b>PROTIP:</b> Feel free to add your locale to library by opening pull request  [TheMisir/form-validator](https://github.com/TheMisir/form-validator) to support library.</small>
 
+Also, You can add your custom [FormValidatorLocale]().
+
+```dart
+main() async {
+  ValidationBuilder.addLocale(
+    Map<String, FormValidatorLocale>.from({'my-local': const MyValidationLocale()}),
+  );
+}
+```
+it will add your custom FormValidatorLocale.
+then, you can change the locale of ValidatorBuilder by `ValidationBuilder(localeName: 'my-local')` or `ValidationBuilder.setLocale('my-local')`.
+
+
 ### Extending `ValidationBuilder`
 
 You can use dart [`extension methods`](https://dart.dev/guides/language/extension-methods) to extend `ValidationBuilder`.
