@@ -31,6 +31,10 @@ class ValidationBuilder {
     globalLocale = createLocale(localeName);
   }
 
+  static void addLocale(Map<String, FormValidatorLocale> mapLocale) {
+    localeMap.addAll(mapLocale);
+  }
+
   final bool optional;
   final String? requiredMessage;
   final FormValidatorLocale _locale;
