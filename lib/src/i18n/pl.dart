@@ -29,4 +29,7 @@ class LocalePl implements FormValidatorLocale {
 
   @override
   String url(String v) => 'adres URL jest niepoprawny';
+
+  @override
+  String noMatch() => "Wartości nie pasują do siebie";
 }

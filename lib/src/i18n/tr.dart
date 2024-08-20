@@ -29,4 +29,7 @@ class LocaleTr implements FormValidatorLocale {
 
   @override
   String url(String v) => 'URL adresi geçerli değil';
+
+  @override
+  String noMatch() => 'Değerler eşleşmiyor';
 }

@@ -8,4 +8,5 @@ abstract class FormValidatorLocale {
   String ip(String v);
   String ipv6(String v);
   String url(String v);
+  String noMatch();
 }

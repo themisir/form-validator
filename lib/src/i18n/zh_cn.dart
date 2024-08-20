@@ -29,4 +29,7 @@ class LocaleZhCN implements FormValidatorLocale {
 
   @override
   String url(String v) => '此字段不是一个有效的统一资源定位器（URL）地址';
+
+  @override
+  String noMatch() => '值不匹配';
 }

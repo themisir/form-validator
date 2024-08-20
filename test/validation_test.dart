@@ -163,4 +163,16 @@ void main() {
       'abaabababababaababfaba',
     ]);
   });
+
+  test('validate match', () {
+    final validate =
+        ValidationBuilder().match('password123', 'Values do not match').build();
+
+    checkValidation(validate, validValues: [
+      'password123',
+    ], invalidValues: [
+      'wrongpassword',
+      'pass123',
+    ]);
+  });
 }

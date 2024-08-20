@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
 
   void _validate() {
-    _form.currentState.validate();
+    _form.currentState?.validate();
   }
 
   @override

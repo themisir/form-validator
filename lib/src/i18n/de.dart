@@ -30,4 +30,7 @@ class LocaleDe implements FormValidatorLocale {
 
   @override
   String url(String v) => 'Dies ist keine gültige URL';
+
+  @override
+  String noMatch() => 'Die Werte stimmen nicht überein';
 }
