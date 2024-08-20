@@ -31,4 +31,7 @@ class LocaleAr implements FormValidatorLocale {
 
   @override
   String url(String v) => 'يرجى إدخال عنوان URL صحيح';
+
+  @override
+  String noMatch() => 'يرجى إدخال قيم متطابقة';
 }

@@ -29,4 +29,7 @@ class LocaleHe implements FormValidatorLocale {
 
   @override
   String url(String v) => 'השדה מכיל כתובת URL לא תקינה';
+
+  @override
+  String noMatch() => "הערכים אינם תואמים";
 }

@@ -31,4 +31,7 @@ class LocalePtBr implements FormValidatorLocale {
 
   @override
   String url(String v) => 'A URL informada não é valida';
+
+  @override
+  String noMatch() => 'Os valores não correspondem';
 }

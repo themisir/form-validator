@@ -29,4 +29,7 @@ class LocaleJa implements FormValidatorLocale {
 
   @override
   String url(String v) => '有効なURLの形式ではありません';
+
+  @override
+  String noMatch() => "値が一致しません";
 }

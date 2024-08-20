@@ -29,4 +29,7 @@ class LocaleAz implements FormValidatorLocale {
 
   @override
   String url(String v) => 'URL ünvanı düzgün deyil';
+
+  @override
+  String noMatch() => 'Dəyərlər uyğun gəlmir';
 }

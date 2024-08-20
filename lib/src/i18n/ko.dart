@@ -21,4 +21,7 @@ class LocaleKo implements FormValidatorLocale {
   String ipv6(String v) => '올바른 IPv6주소를 입력해주세요';
   @override
   String url(String v) => '올바른 URL주소를 입력해주세요';
+
+  @override
+  String noMatch() => "값이 일치하지 않습니다";
 }

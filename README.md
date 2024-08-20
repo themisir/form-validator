@@ -110,6 +110,10 @@ Checks if value is correct IPv6 address.
 
 Checks if value is correct url address.
 
+### `.match(String otherValue, [String message])`
+
+Checks if the value matches the specified `otherValue`. This can be used to validate if two input values are identical.
+
 ### `.regExp(RegExp regExp, String message)`
 
 Validates if value does matches `regExp` or not.

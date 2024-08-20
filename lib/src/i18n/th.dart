@@ -29,4 +29,7 @@ class LocaleTh implements FormValidatorLocale {
 
   @override
   String url(String v) => 'ที่อยู่ URL ไม่ถูกต้อง';
+
+  @override
+  String noMatch() => 'ค่าไม่ตรงกัน';
 }

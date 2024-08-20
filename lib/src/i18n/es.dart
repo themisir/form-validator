@@ -32,4 +32,7 @@ class LocaleEs implements FormValidatorLocale {
 
   @override
   String url(String v) => 'El campo no es una dirección URL válida';
+
+  @override
+  String noMatch() => 'Los valores no coinciden';
 }

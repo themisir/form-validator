@@ -29,4 +29,7 @@ class LocaleVi implements FormValidatorLocale {
 
   @override
   String url(String v) => 'Địa chỉ URL không hợp lệ';
+
+  @override
+  String noMatch() => 'Giá trị không khớp';
 }

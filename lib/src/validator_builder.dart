@@ -112,6 +112,10 @@ class ValidationBuilder {
   ValidationBuilder required([String? message]) =>
       add((v) => v == null || v.isEmpty ? message ?? _locale.required() : null);
 
+  /// Checks if two values match
+  ValidationBuilder match(String? otherValue, [String? message]) =>
+      add((v) => v == otherValue ? null : message ?? _locale.noMatch());
+
   /// Value length must be greater than or equal to [minLength]
   ValidationBuilder minLength(int minLength, [String? message]) =>
       add((v) => v!.length < minLength

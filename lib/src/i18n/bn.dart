@@ -30,4 +30,7 @@ class LocaleBn implements FormValidatorLocale {
 
   @override
   String url(String v) => 'এটি একটি বৈধ URL ঠিকানা নয়';
+
+  @override
+  String noMatch() => 'মানগুলি মেলেনি';
 }

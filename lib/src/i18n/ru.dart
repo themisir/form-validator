@@ -31,4 +31,7 @@ class LocaleRu implements FormValidatorLocale {
 
   @override
   String url(String v) => 'Неверный URL адрес';
+
+  @override
+  String noMatch() => 'Значения не совпадают';
 }
