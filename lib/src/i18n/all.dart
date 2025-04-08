@@ -5,6 +5,7 @@ import 'ca_es.dart';
 import 'de.dart';
 import 'en.dart';
 import 'es.dart';
+import 'fa.dart';
 import 'fr.dart';
 import 'he.dart';
 import 'id.dart';
@@ -12,6 +13,7 @@ import 'it.dart';
 import 'ja.dart';
 import 'nl.dart';
 import 'pl.dart';
+import 'ps.dart';
 import 'pt_br.dart';
 import 'ro.dart';
 import 'ru.dart';
@@ -45,6 +47,8 @@ const localeMap = <String, FormValidatorLocale>{
   'ro': LocaleRo(),
   'nl': LocaleNl(),
   'ko': LocaleKo(),
+  'fa': LocaleFA(),
+  'ps': LocalePS(),
 };
 
 final supportedLocales = localeMap.keys.toList();
