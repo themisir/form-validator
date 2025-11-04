@@ -1,5 +1,3 @@
-typedef ValidatorPredicate = bool Function(String value);
-
 class ValidatorOptions {
   ValidatorOptions({
     RegExp? emailRegExp,
