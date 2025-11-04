@@ -136,13 +136,13 @@ class ValidationBuilder {
   ValidationBuilder email([String? message]) =>
       add((v) => (_options.emailRegExp != null
               ? _options.emailRegExp!.hasMatch(v!)
-              : _checkEmail(v!))
+              : _isValidEmail(v!))
           ? null
           : message ?? _locale.email(v));
 
   static final RegExp _emailLocalSpecialChars = RegExp(r'["(),:;<>@\[\\\]]');
 
-  static bool _checkEmail(String s) {
+  bool _isValidEmail(String s) {
     // The goal is to allow as much values as possible while eliminating obvious
     // invalid values. False negatives are way more harmful than false positives
     // for client side email validation.
@@ -176,9 +176,8 @@ class ValidationBuilder {
     final local = s.substring(0, atIndex);
     if (local.length > 63 || local.length == 0) return false;
 
-    final localIsQuoted =
-        local.startsWith('"') && local.endsWith('"') && local.length > 2;
-    if (!localIsQuoted) {
+    final localIsPotentiallyQuoted = local.contains('"') && local.length > 2;
+    if (!localIsPotentiallyQuoted) {
       /*
          Ref 3: https://en.wikipedia.org/wiki/Email_address#:~:text=Space%20and%20special%20characters
 
@@ -192,21 +191,35 @@ class ValidationBuilder {
 
     // 3.
     final domain = s.substring(atIndex + 1);
-    if (!domain.contains('.')) return false;
-
     // Not practical, but syntactically correct
     if (domain.length < 3) return false;
 
-    /*
-       Ref 4: https://webmasters.stackexchange.com/a/119105
+    if (domain.startsWith('[')) {
+      if (domain.endsWith(']') && domain.length > 3) {
+        // IPv4 or IPv6
+        final ip = domain.substring(1, domain.length - 1);
+        if (!_isValidIpv4(ip) && !_isValidIpv6(ip)) {
+          return false;
+        }
+      } else {
+        // unterminated
+        return false;
+      }
+    } else {
+      // 3.
+      if (!domain.contains('.')) return false;
 
-       > Each node has a label, which is zero to 63 octets in length. [...]
-       > One label is reserved, and that is the null (i.e., zero length) label used for the root.
-       >
-       > RFC 1034
-    */
-    if (domain.startsWith('.')) return false;
-    if (domain.contains('..')) return false;
+      /*
+         Ref 4: https://webmasters.stackexchange.com/a/119105
+
+         > Each node has a label, which is zero to 63 octets in length. [...]
+         > One label is reserved, and that is the null (i.e., zero length) label used for the root.
+         >
+         > RFC 1034
+      */
+      if (domain.startsWith('.')) return false;
+      if (domain.contains('..')) return false;
+    }
 
     return true;
   }
@@ -223,12 +236,22 @@ class ValidationBuilder {
           : message ?? _locale.phoneNumber(v));
 
   /// Value must be a well formatted IPv4 address
-  ValidationBuilder ip([String? message]) => add((v) =>
-      _options.ipv4RegExp.hasMatch(v!) ? null : message ?? _locale.ip(v));
+  ValidationBuilder ip([String? message]) =>
+      add((v) => _isValidIpv4(v!) ? null : message ?? _locale.ip(v));
+
+  bool _isValidIpv4(String v) {
+    // todo: change to something that doesn't rely on RegExp
+    return _options.ipv4RegExp.hasMatch(v);
+  }
 
   /// Value must be a well formatted IPv6 address
-  ValidationBuilder ipv6([String? message]) => add((v) =>
-      _options.ipv6RegExp.hasMatch(v!) ? null : message ?? _locale.ipv6(v));
+  ValidationBuilder ipv6([String? message]) =>
+      add((v) => _isValidIpv6(v!) ? null : message ?? _locale.ipv6(v));
+
+  bool _isValidIpv6(String v) {
+    // todo: change to something that doesn't rely on RegExp
+    return _options.ipv6RegExp.hasMatch(v);
+  }
 
   /// Value must be a well formatted URL address
   ValidationBuilder url([String? message]) => add((v) =>

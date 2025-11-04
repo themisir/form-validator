@@ -57,6 +57,8 @@ void main() {
         'a.b.c@d.e.f',
         'a.b.c@d.e.f.',
         'a.b.c@127.0.0.1',
+        'a.b.c@[127.0.0.1]',
+        'cool@[fe80:3::1ff:fe23:4567:890a]',
         '"@"@at.',
       ],
       invalidValues: [
