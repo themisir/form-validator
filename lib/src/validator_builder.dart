@@ -143,6 +143,13 @@ class ValidationBuilder {
   static final RegExp _emailLocalSpecialChars = RegExp(r'["(),:;<>@\[\\\]]');
 
   static bool _checkEmail(String s) {
+    // The goal is to allow as much values as possible while eliminating obvious
+    // invalid values. False negatives are way more harmful than false positives
+    // for client side email validation.
+    //
+    // A proper server-side SMTP based validation should be used on top whenever
+    // the validity of the email address is a concern.
+
     /*
       Ref 1: https://stackoverflow.com/a/48170419
       Ref 2: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#syntactic-validation
@@ -186,6 +193,19 @@ class ValidationBuilder {
     // 3.
     final domain = s.substring(atIndex + 1);
     if (!domain.contains('.')) return false;
+
+    // Not practical, but syntactically correct
+    if (domain.length < 3) return false;
+
+    /*
+       Ref 4: https://webmasters.stackexchange.com/a/119105
+
+       > Each node has a label, which is zero to 63 octets in length. [...]
+       > One label is reserved, and that is the null (i.e., zero length) label used for the root.
+       >
+       > RFC 1034
+    */
+    if (domain.contains('..')) return false;
 
     return true;
   }
