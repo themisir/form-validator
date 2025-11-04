@@ -205,6 +205,7 @@ class ValidationBuilder {
        >
        > RFC 1034
     */
+    if (domain.startsWith('.')) return false;
     if (domain.contains('..')) return false;
 
     return true;
