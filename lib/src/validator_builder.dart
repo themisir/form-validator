@@ -133,8 +133,96 @@ class ValidationBuilder {
       add((v) => regExp.hasMatch(v!) ? null : message);
 
   /// Value must be a well formatted email
-  ValidationBuilder email([String? message]) => add((v) =>
-      _options.emailRegExp.hasMatch(v!) ? null : message ?? _locale.email(v));
+  ValidationBuilder email([String? message]) =>
+      add((v) => (_options.emailRegExp != null
+              ? _options.emailRegExp!.hasMatch(v!)
+              : _isValidEmail(v!))
+          ? null
+          : message ?? _locale.email(v));
+
+  static final RegExp _emailLocalSpecialChars = RegExp(r'["(),:;<>@\[\\\]]');
+
+  bool _isValidEmail(String s) {
+    // The goal is to allow as much values as possible while eliminating obvious
+    // invalid values. False negatives are way more harmful than false positives
+    // for client side email validation.
+    //
+    // A proper server-side SMTP based validation should be used on top whenever
+    // the validity of the email address is a concern.
+
+    /*
+      Ref 1: https://stackoverflow.com/a/48170419
+      Ref 2: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#syntactic-validation
+
+      1. The email address contains two parts, separated with an @ symbol.
+      2. The email address does not contain dangerous characters (such as backticks, single or double quotes, or null bytes).
+         Exactly which characters are dangerous will depend on how the address is going to be used (echoed in page, inserted into database, etc).
+      3. The domain part contains only letters, numbers, hyphens (-) and periods (.).
+      4. The email address is a reasonable length:
+        4.1. The local part (before the @) should be no more than 63 characters.
+        4.2. The total length should be no more than 254 characters.
+    */
+
+    // 2. "dangerous characters" is backend dependent, thus we can't implement one fits all solution
+
+    // 4.2.
+    if (s.length > 254 || s.length < 3) return false;
+
+    // 1.
+    final atIndex = s.lastIndexOf('@');
+    if (atIndex < 0) return false;
+
+    // 4.
+    final local = s.substring(0, atIndex);
+    if (local.length > 63 || local.length == 0) return false;
+
+    final localIsPotentiallyQuoted = local.contains('"') && local.length > 2;
+    if (!localIsPotentiallyQuoted) {
+      /*
+         Ref 3: https://en.wikipedia.org/wiki/Email_address#:~:text=Space%20and%20special%20characters
+
+         Space and special characters "(),:;<>@[\] are allowed with
+         restrictions (they are only allowed inside a quoted string,
+         as described in the paragraph below, and in that quoted string,
+         any backslash or double-quote must be preceded once by a backslash);
+      */
+      if (_emailLocalSpecialChars.hasMatch(local)) return false;
+    }
+
+    // 3.
+    final domain = s.substring(atIndex + 1);
+    // Not practical, but syntactically correct
+    if (domain.length < 3) return false;
+
+    if (domain.startsWith('[')) {
+      if (domain.endsWith(']') && domain.length > 3) {
+        // IPv4 or IPv6
+        final ip = domain.substring(1, domain.length - 1);
+        if (!_isValidIpv4(ip) && !_isValidIpv6(ip)) {
+          return false;
+        }
+      } else {
+        // unterminated
+        return false;
+      }
+    } else {
+      // 3.
+      if (!domain.contains('.')) return false;
+
+      /*
+         Ref 4: https://webmasters.stackexchange.com/a/119105
+
+         > Each node has a label, which is zero to 63 octets in length. [...]
+         > One label is reserved, and that is the null (i.e., zero length) label used for the root.
+         >
+         > RFC 1034
+      */
+      if (domain.startsWith('.')) return false;
+      if (domain.contains('..')) return false;
+    }
+
+    return true;
+  }
 
   // needed for short circuiting the full validation
   static final RegExp _anyLetter = RegExp(r'[A-Za-z]');
@@ -148,12 +236,22 @@ class ValidationBuilder {
           : message ?? _locale.phoneNumber(v));
 
   /// Value must be a well formatted IPv4 address
-  ValidationBuilder ip([String? message]) => add((v) =>
-      _options.ipv4RegExp.hasMatch(v!) ? null : message ?? _locale.ip(v));
+  ValidationBuilder ip([String? message]) =>
+      add((v) => _isValidIpv4(v!) ? null : message ?? _locale.ip(v));
+
+  bool _isValidIpv4(String v) {
+    // todo: change to something that doesn't rely on RegExp
+    return _options.ipv4RegExp.hasMatch(v);
+  }
 
   /// Value must be a well formatted IPv6 address
-  ValidationBuilder ipv6([String? message]) => add((v) =>
-      _options.ipv6RegExp.hasMatch(v!) ? null : message ?? _locale.ipv6(v));
+  ValidationBuilder ipv6([String? message]) =>
+      add((v) => _isValidIpv6(v!) ? null : message ?? _locale.ipv6(v));
+
+  bool _isValidIpv6(String v) {
+    // todo: change to something that doesn't rely on RegExp
+    return _options.ipv6RegExp.hasMatch(v);
+  }
 
   /// Value must be a well formatted URL address
   ValidationBuilder url([String? message]) => add((v) =>

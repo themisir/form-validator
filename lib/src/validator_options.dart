@@ -1,5 +1,3 @@
-typedef ValidatorPredicate = bool Function(String value);
-
 class ValidatorOptions {
   ValidatorOptions({
     RegExp? emailRegExp,
@@ -7,19 +5,19 @@ class ValidatorOptions {
     RegExp? ipv4RegExp,
     RegExp? ipv6RegExp,
     RegExp? urlRegExp,
-  })  : this.emailRegExp = emailRegExp ?? _defaultEmailRegExp,
+  })  : this.emailRegExp = emailRegExp,
         this.phoneRegExp = phoneRegExp ?? _defaultPhoneRegExp,
         this.ipv4RegExp = ipv4RegExp ?? _defaultIpv4RegExp,
         this.ipv6RegExp = ipv6RegExp ?? _defaultIpv6RegExp,
         this.urlRegExp = urlRegExp ?? _defaultUrlRegExp;
 
-  RegExp emailRegExp;
+  RegExp? emailRegExp;
   RegExp phoneRegExp;
   RegExp ipv4RegExp;
   RegExp ipv6RegExp;
   RegExp urlRegExp;
 
-  static final RegExp _defaultEmailRegExp = RegExp(
+  static final RegExp LegacyEmailRegExpThatHadFalseNegatives = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9\-\_]+(\.[a-zA-Z]+)*$");
 
   static final RegExp _defaultPhoneRegExp = RegExp(r'^\d{7,15}$');

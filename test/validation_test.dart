@@ -44,20 +44,30 @@ void main() {
     // What characters are allowed in an email address?
     // ref: https://stackoverflow.com/a/2049510/7616528
 
-    checkValidation(validate, validValues: [
-      'user@gmil.com',
-      'mani@main.com',
-      'email@no-domain',
-      'somelonger_email@domain.co.uk',
-      'santa.claus@somewhere.us.com',
-      'mail?@gmail.com',
-      'a@b.c',
-    ], invalidValues: [
-      'notanemail',
-      'email@gmail@mail.com',
-      '@g.com',
-      'username@',
-    ]);
+    checkValidation(
+      validate,
+      validValues: [
+        'user@gmil.com',
+        'mani@main.com',
+        'email@nope.',
+        'somelonger_email@domain.co.uk',
+        'santa.claus@somewhere.us.com',
+        'mail?@gmail.com',
+        'a@b.c',
+        'a.b.c@d.e.f',
+        'a.b.c@d.e.f.',
+        'a.b.c@127.0.0.1',
+        'a.b.c@[127.0.0.1]',
+        'cool@[fe80:3::1ff:fe23:4567:890a]',
+        '"@"@at.',
+      ],
+      invalidValues: [
+        'notanemail',
+        '@g.com',
+        'username@',
+        '@@a',
+      ],
+    );
   });
 
   test('validate phone number', () {
@@ -93,7 +103,7 @@ void main() {
     ], invalidValues: [
       '+123 some text 56789',
       '+1234567890123456',
-      'mail@@gmail.com',
+      '@@gmail.com',
     ]);
 
     expect(validate('nothing'), equals('wrong email'),
